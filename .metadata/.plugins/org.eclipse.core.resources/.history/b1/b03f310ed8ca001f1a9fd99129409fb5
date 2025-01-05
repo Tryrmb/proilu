@@ -1,0 +1,58 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Educateur;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class MenuEducateurIU extends JFrame {
+    public MenuEducateurIU(String email, DataStorage dataStorage) {
+        setTitle("Menu Éducateur");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        Educateur educateur = dataStorage.trouverEducateurParEmail(email);
+
+        JPanel panel = new JPanel(new GridLayout(6, 1, 10, 10));
+        JLabel welcomeLabel = new JLabel("Bienvenue, " + educateur.getNom(), SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        panel.add(welcomeLabel);
+
+        JButton allergieButton = new JButton("Ajouter ou modifier une allergie");
+        JButton santeButton = new JButton("Ajouter ou modifier un problème de santé");
+        JButton activitesButton = new JButton("Gérer les activités");
+        JButton bilansButton = new JButton("Gérer les bilans");
+        JButton retourButton = new JButton("Retour");
+
+        allergieButton.addActionListener(e -> {
+            // Logic pour gérer les allergies
+            JOptionPane.showMessageDialog(this, "Gestion des allergies à afficher ici.");
+        });
+
+        santeButton.addActionListener(e -> {
+            // Logic pour gérer les problèmes de santé
+            JOptionPane.showMessageDialog(this, "Gestion des problèmes de santé à afficher ici.");
+        });
+
+        activitesButton.addActionListener(e -> {
+            // Logic pour gérer les activités
+            JOptionPane.showMessageDialog(this, "Gestion des activités à afficher ici.");
+        });
+
+        bilansButton.addActionListener(e -> {
+            // Logic pour gérer les bilans
+            JOptionPane.showMessageDialog(this, "Gestion des bilans à afficher ici.");
+        });
+
+        retourButton.addActionListener(e -> dispose());
+
+        panel.add(allergieButton);
+        panel.add(santeButton);
+        panel.add(activitesButton);
+        panel.add(bilansButton);
+        panel.add(retourButton);
+
+        add(panel);
+    }
+}

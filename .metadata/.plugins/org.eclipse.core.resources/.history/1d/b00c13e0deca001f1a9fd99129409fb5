@@ -1,0 +1,164 @@
+package modele;
+
+/**
+ * Classe Enfant
+ * Représente un enfant avec ses allergies, son régime alimentaire, et ses activités.
+ */
+public class Enfant {
+    private String nom;
+    private String[] allergies; // Tableaux pour les allergies
+    private String regimeAlimentaire;
+    private String[] activites; // Tableaux pour les activités de l'enfant
+    private String[] problemesDeSante; // Tableaux pour les problèmes de santé
+    private String bilan; // Bilan individuel
+
+    private static final int TAILLE_MAX = 10; // Taille maximale des tableaux
+    private int nombreAllergies = 0;
+    private int nombreActivites = 0;
+    private int nombreProblemesDeSante = 0;
+
+    // Constructeur principal avec allergies en chaîne de caractères
+    public Enfant(String nom, String allergiesRaw, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = new String[TAILLE_MAX];
+        this.activites = new String[TAILLE_MAX];
+        this.problemesDeSante = new String[TAILLE_MAX];
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.bilan = "";
+
+        // Découpage des allergies et ajout
+        if (allergiesRaw != null && !allergiesRaw.isEmpty()) {
+            String[] allergiesDecoupees = allergiesRaw.split(", ");
+            for (String allergie : allergiesDecoupees) {
+                ajouterAllergie(allergie.trim());
+            }
+        }
+    }
+
+    // Constructeur alternatif avec allergies sous forme de tableau
+    public Enfant(String nom, String[] allergiesInit, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = new String[TAILLE_MAX];
+        this.activites = new String[TAILLE_MAX];
+        this.problemesDeSante = new String[TAILLE_MAX];
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.bilan = "";
+
+        // Ajout des allergies initiales
+        if (allergiesInit != null) {
+            for (String allergie : allergiesInit) {
+                ajouterAllergie(allergie.trim());
+            }
+        }
+    }
+
+    // Getters et setters
+    public String getNom() {
+        return nom;
+    }
+
+    public String[] getAllergies() {
+        return filtrerTableau(allergies, nombreAllergies);
+    }
+
+    public void ajouterAllergie(String allergie) {
+        if (nombreAllergies >= TAILLE_MAX) {
+            System.out.println("Erreur : Le nombre maximum d'allergies est atteint.");
+            return;
+        }
+        if (allergie == null || allergie.isEmpty()) {
+            System.out.println("Erreur : L'allergie ne peut pas être vide.");
+            return;
+        }
+        for (int i = 0; i < nombreAllergies; i++) {
+            if (allergies[i].equalsIgnoreCase(allergie)) {
+                System.out.println("L'allergie existe déjà.");
+                return;
+            }
+        }
+        allergies[nombreAllergies++] = allergie;
+    }
+
+    public boolean supprimerAllergie(String allergie) {
+        if (allergie == null || allergie.isEmpty()) {
+            System.out.println("Erreur : L'allergie à supprimer ne peut pas être vide.");
+            return false;
+        }
+        for (int i = 0; i < nombreAllergies; i++) {
+            if (allergies[i].equalsIgnoreCase(allergie)) {
+                // Décalage des éléments pour supprimer l'allergie
+                for (int j = i; j < nombreAllergies - 1; j++) {
+                    allergies[j] = allergies[j + 1];
+                }
+                allergies[--nombreAllergies] = null;
+                return true;
+            }
+        }
+        System.out.println("Allergie non trouvée.");
+        return false;
+    }
+
+    public String getRegimeAlimentaire() {
+        return regimeAlimentaire;
+    }
+
+    public String[] getActivites() {
+        return filtrerTableau(activites, nombreActivites);
+    }
+
+    public void ajouterActivite(String activite) {
+        if (nombreActivites >= TAILLE_MAX) {
+            System.out.println("Erreur : Le nombre maximum d'activités est atteint.");
+            return;
+        }
+        if (activite == null || activite.isEmpty()) {
+            System.out.println("Erreur : L'activité ne peut pas être vide.");
+            return;
+        }
+        for (int i = 0; i < nombreActivites; i++) {
+            if (activites[i].equalsIgnoreCase(activite)) {
+                System.out.println("L'activité existe déjà.");
+                return;
+            }
+        }
+        activites[nombreActivites++] = activite;
+    }
+
+    public String[] getProblemesDeSante() {
+        return filtrerTableau(problemesDeSante, nombreProblemesDeSante);
+    }
+
+    public void ajouterProblemeDeSante(String probleme) {
+        if (nombreProblemesDeSante >= TAILLE_MAX) {
+            System.out.println("Erreur : Le nombre maximum de problèmes de santé est atteint.");
+            return;
+        }
+        if (probleme == null || probleme.isEmpty()) {
+            System.out.println("Erreur : Le problème de santé ne peut pas être vide.");
+            return;
+        }
+        for (int i = 0; i < nombreProblemesDeSante; i++) {
+            if (problemesDeSante[i].equalsIgnoreCase(probleme)) {
+                System.out.println("Le problème de santé existe déjà.");
+                return;
+            }
+        }
+        problemesDeSante[nombreProblemesDeSante++] = probleme;
+    }
+
+    public String getBilan() {
+        return bilan;
+    }
+
+    public void setBilan(String bilan) {
+        this.bilan = bilan;
+    }
+
+    // Méthode utilitaire pour retourner uniquement les éléments non nuls d'un tableau
+    private String[] filtrerTableau(String[] tableau, int tailleReelle) {
+        String[] resultat = new String[tailleReelle];
+        System.arraycopy(tableau, 0, resultat, 0, tailleReelle);
+        return resultat;
+    }
+}
+

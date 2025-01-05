@@ -1,0 +1,36 @@
+package tests.gestion;
+
+import gestion.GestionnaireIncompatibilité;
+import modele.Enfant;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class GestionnaireIncompatibilitéTest {
+    private GestionnaireIncompatibilité gestionnaireIncompatibilite;
+
+    @BeforeEach
+    void setUp() {
+        gestionnaireIncompatibilite = new GestionnaireIncompatibilité();
+    }
+
+    @Test
+    void testAjouterEtVerifierIncompatibilites() {
+        gestionnaireIncompatibilite.ajouterIncompatibilites("Natation", new String[]{"Chlore"});
+
+        Enfant enfantCompatible = new Enfant("Gaston", new String[]{"Lactose"}, "Traditionnel");
+        Enfant enfantIncompatible = new Enfant("Sophie", new String[]{"Chlore"}, "Végétarien");
+
+        assertTrue(gestionnaireIncompatibilite.estCompatible("Natation", enfantCompatible));
+        assertFalse(gestionnaireIncompatibilite.estCompatible("Natation", enfantIncompatible));
+    }
+
+    @Test
+    void testGetActivitesCompatibles() {
+        Enfant enfant = new Enfant("Gaston", new String[]{"Chlore"}, "Traditionnel");
+        String[] compatibles = gestionnaireIncompatibilite.getActivitesCompatiblesParCategorie("Sorties Aquatiques", enfant);
+
+        assertNotNull(compatibles);
+    }
+}

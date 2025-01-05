@@ -1,0 +1,58 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Parent;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class MenuParentIU extends JFrame {
+    public MenuParentIU(String email, DataStorage dataStorage) {
+        setTitle("Menu Parent");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        // Récupérer les informations du parent à partir de l'email
+        Parent parent = dataStorage.trouverParentParEmail(email);
+
+        if (parent == null) {
+            JOptionPane.showMessageDialog(this, "Erreur : Parent introuvable.");
+            dispose();
+            return;
+        }
+
+        JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
+        JLabel welcomeLabel = new JLabel("Bienvenue, " + parent.getNom(), SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        panel.add(welcomeLabel);
+
+        JButton activitesButton = new JButton("Voir les activités des enfants");
+        JButton santeButton = new JButton("Voir les informations santé");
+        JButton bilansButton = new JButton("Voir les bilans");
+        JButton retourButton = new JButton("Retour");
+
+        activitesButton.addActionListener(e -> {
+            // Logic pour afficher les activités
+            JOptionPane.showMessageDialog(this, "Activités à afficher ici.");
+        });
+
+        santeButton.addActionListener(e -> {
+            // Logic pour afficher les informations santé
+            JOptionPane.showMessageDialog(this, "Informations santé à afficher ici.");
+        });
+
+        bilansButton.addActionListener(e -> {
+            // Logic pour afficher les bilans
+            JOptionPane.showMessageDialog(this, "Bilans à afficher ici.");
+        });
+
+        retourButton.addActionListener(e -> dispose());
+
+        panel.add(activitesButton);
+        panel.add(santeButton);
+        panel.add(bilansButton);
+        panel.add(retourButton);
+
+        add(panel);
+    }
+}

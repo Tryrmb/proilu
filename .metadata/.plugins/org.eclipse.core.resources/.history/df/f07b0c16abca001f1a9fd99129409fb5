@@ -1,0 +1,18 @@
+// GestionActivitesFrame.java
+package ihm;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionActivitesFrame extends JFrame {
+    public GestionActivitesFrame() {
+        setTitle("Gérer les Activités");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JLabel("Gestion des Activités", JLabel.CENTER), BorderLayout.CENTER);
+        add(panel);
+    }
+}
+

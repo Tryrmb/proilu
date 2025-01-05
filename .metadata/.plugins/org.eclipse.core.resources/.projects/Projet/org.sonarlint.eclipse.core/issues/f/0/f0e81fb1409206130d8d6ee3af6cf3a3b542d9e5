@@ -1,0 +1,12 @@
+
+‡
+java:S20955"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.8ú®…Ã2b 793b5d51047f6081d90b69ace9e54fach
+e	java:S106@"+Replace this use of System.err by a logger.8ú®…Ã2b af259b5629da223c99d853ddc8045589h
+f	java:S106Œ"+Replace this use of System.out by a logger.8ú®…Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh
+f	java:S106"+Replace this use of System.out by a logger.8ú®…Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106H"+Replace this use of System.out by a logger.8ú®…Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh
+€	java:S101	"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.b 354d1ae370d59810dc612622d2e08195h
+“	java:S1359"YReduce the total number of break and continue statements in this loop to use at most one.8ú®…Ã2b 901889f4f34f8ca18ac2f53d1fed346eh
+‰
+java:S1192&"NDefine a constant instead of duplicating this literal "BÃ©bÃ© nageur" 5 times.8ú®…Ã2b 1d0538840bcb13d45bd92622115a6c2fh
+f	java:S106"+Replace this use of System.out by a logger.8ú®…Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh

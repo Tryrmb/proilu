@@ -1,0 +1,61 @@
+package gestion;
+
+import modele.Parent;
+import modele.Educateur;
+import modele.Enfant;
+
+/**
+ * Classe DataStorage
+ * Gère le stockage et le chargement des données.
+ */
+public class DataStorage {
+    private Parent[] parents;
+    private Educateur[] educateurs;
+    private static final int MAX_PARENTS = 50;
+    private static final int MAX_EDUCATEURS = 20;
+    private int indexParents = 0;
+    private int indexEducateurs = 0;
+
+    public DataStorage() {
+        this.parents = new Parent[MAX_PARENTS];
+        this.educateurs = new Educateur[MAX_EDUCATEURS];
+    }
+
+    public void ajouterParent(Parent parent) {
+        if (indexParents < MAX_PARENTS) {
+            parents[indexParents++] = parent;
+        }
+    }
+
+    public void ajouterEducateur(Educateur educateur) {
+        if (indexEducateurs < MAX_EDUCATEURS) {
+            educateurs[indexEducateurs++] = educateur;
+        }
+    }
+
+    public Parent trouverParentParEmail(String email) {
+        for (Parent parent : parents) {
+            if (parent != null && parent.getEmail().equals(email)) {
+                return parent;
+            }
+        }
+        return null;
+    }
+
+    public Educateur trouverEducateurParEmail(String email) {
+        for (Educateur educateur : educateurs) {
+            if (educateur != null && educateur.getEmail().equals(email)) {
+                return educateur;
+            }
+        }
+        return null;
+    }
+
+    public Parent[] getParents() {
+        return parents;
+    }
+
+    public Educateur[] getEducateurs() {
+        return educateurs;
+    }
+}

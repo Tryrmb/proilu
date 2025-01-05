@@ -1,0 +1,50 @@
+package modele;
+
+import java.util.ArrayList;
+
+/**
+ * Classe Parent
+ * Représente un parent avec ses informations et les enfants associés.
+ */
+public class Parent {
+    private String nom;
+    private String email;
+    private String motDePasse;
+    private Enfant[] enfants;
+    private static final int MAX_ENFANTS = 10;
+    private int indexEnfants;
+
+    public Parent(String nom, String email, String motDePasse) {
+        this.nom = nom;
+        this.email = email;
+        this.motDePasse = motDePasse;
+        this.enfants = new Enfant[MAX_ENFANTS];
+        this.indexEnfants = 0;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void ajouterEnfant(Enfant enfant) {
+        if (indexEnfants < MAX_ENFANTS) {
+            enfants[indexEnfants++] = enfant;
+        } else {
+            System.out.println("Limite maximale d'enfants atteinte pour ce parent.");
+        }
+    }
+
+    public Enfant[] getEnfants() {
+        Enfant[] result = new Enfant[indexEnfants];
+        System.arraycopy(enfants, 0, result, 0, indexEnfants);
+        return result;
+    }
+}

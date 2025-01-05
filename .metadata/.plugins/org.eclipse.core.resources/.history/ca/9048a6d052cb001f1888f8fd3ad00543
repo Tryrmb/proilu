@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module Projet {
+	requires java.desktop;
+	requires junit;
+}

@@ -1,0 +1,91 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionActivitesIU extends JFrame {
+    public GestionActivitesIU(String emailEducateur, DataStorage dataStorage) {
+        setTitle("Gestion des Activités");
+        setSize(600, 500);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        JTextArea activitesTextArea = new JTextArea();
+        activitesTextArea.setEditable(false);
+
+        // Récupération des informations de l'éducateur
+        var educateur = dataStorage.trouverEducateurParEmail(emailEducateur);
+        if (educateur == null) {
+            activitesTextArea.setText("Erreur : Éducateur introuvable.");
+        } else {
+            activitesTextArea.append("Nom de l'éducateur connecté : " + educateur.getNom() + "\n");
+
+            // Détection de la catégorie de l'éducateur
+            String categorie = "";
+            switch (educateur.getNom()) {
+                case "Medhi Souaki":
+                    categorie = "Sorties en Forêt et Aquatiques";
+                    break;
+                case "Julie Cazeneuve":
+                    categorie = "Activités Récréatives";
+                    break;
+                case "Christelle Meudon":
+                    categorie = "Activités Culinaires";
+                    break;
+                default:
+                    activitesTextArea.append("Erreur : Catégorie non définie pour cet éducateur.\n");
+                    break;
+            }
+
+            if (!categorie.isEmpty()) {
+                activitesTextArea.append("Catégorie détectée : " + categorie + "\n");
+
+                // Récupération des activités compatibles pour un enfant
+                Enfant enfant = demanderEnfant(dataStorage);
+                if (enfant != null) {
+                    activitesTextArea.append("Allergies : " + String.join(", ", enfant.getAllergies()) + "\n");
+                    activitesTextArea.append("Problèmes de santé : " + String.join(", ", enfant.getProblemesDeSante()) + "\n");
+
+                    String[] activitesCompatibles = dataStorage.getActivitesCompatiblesParCategorie(categorie, enfant);
+
+                    // Affichage des activités par jour
+                    String[] jours = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
+                    for (int i = 0; i < jours.length; i++) {
+                        String activite = i < activitesCompatibles.length ? activitesCompatibles[i] : "Aucune activité compatible.";
+                        activitesTextArea.append("Activité disponible " + jours[i] + " : " + activite + "\n");
+                    }
+
+                    // Demander à l'utilisateur de choisir une activité
+                    String activiteChoisie = JOptionPane.showInputDialog(this, "Choisissez une activité (ou 0 pour retour) :");
+                    if (!"0".equals(activiteChoisie)) {
+                        if (enfant.ajouterActivite(activiteChoisie)) {
+                            JOptionPane.showMessageDialog(this, "Activité \"" + activiteChoisie + "\" ajoutée pour l'enfant \"" + enfant.getNom() + "\".");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erreur : Activité non valide ou déjà ajoutée.");
+                        }
+                    }
+                } else {
+                    activitesTextArea.append("Erreur : Aucun enfant valide trouvé.\n");
+                }
+            }
+        }
+
+        JButton fermerButton = new JButton("Fermer");
+        fermerButton.addActionListener(e -> dispose());
+
+        panel.add(new JScrollPane(activitesTextArea), BorderLayout.CENTER);
+        panel.add(fermerButton, BorderLayout.SOUTH);
+        add(panel);
+    }
+
+    private Enfant demanderEnfant(DataStorage dataStorage) {
+        String nomEnfant = JOptionPane.showInputDialog(this, "Nom de l'enfant :");
+        if (nomEnfant != null && !nomEnfant.isEmpty()) {
+            return dataStorage.trouverEnfantParNom(nomEnfant);
+        }
+        return null;
+    }
+}

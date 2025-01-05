@@ -1,0 +1,123 @@
+package gestion;
+
+import modele.Enfant;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Classe GestionnaireIncompatibilité
+ * Gère les vérifications d'incompatibilités pour les activités des enfants
+ * en fonction de leurs allergies et conditions médicales.
+ */
+public class GestionnaireIncompatibilité {
+    private String[] activites; // Tableau des noms d'activités
+    private String[][] incompatibilites; // Tableau des incompatibilités par activité
+    private String[][] categoriesEtActivites; // Tableau des catégories et activités associées
+
+    private int nombreActivites;
+
+    public GestionnaireIncompatibilité(int tailleMax) {
+        this.activites = new String[tailleMax];
+        this.incompatibilites = new String[tailleMax][];
+        this.categoriesEtActivites = new String[][]{
+            {"Activités Culinaires", "Gâteau aux pommes", "Cookie aux chocolats", "Cupcakes aux fraises", "Hamburger maison", "Pizza végétarienne"},
+            {"Activités Récréatives", "Peinture avec les doigts", "Jeux d'eau sensoriels", "Parcours motricité", "Conte interactif", "Atelier pâte à modeler"},
+            {"Sorties en Forêt", "Chasse aux trésors nature", "Construction cabane miniature", "Comptine en plein air", "Parcours sensoriels", "Observation animaux et insectes"},
+            {"Sorties Aquatiques", "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur"}
+        };
+        this.nombreActivites = 0;
+    }
+
+    // Charger les incompatibilités depuis un fichier CSV
+    public void chargerIncompatibilitesDepuisCSV(String cheminFichier) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(cheminFichier));
+        String ligne;
+        boolean isFirstLine = true;
+
+        while ((ligne = reader.readLine()) != null) {
+            if (isFirstLine) {
+                isFirstLine = false;
+                continue;
+            }
+            String[] donnees = ligne.split(",");
+            if (donnees.length < 2) {
+                System.err.println("Ligne ignorée : nombre insuffisant de colonnes -> " + ligne);
+                continue;
+            }
+
+            ajouterIncompatibilites(donnees[0].trim(), donnees[1].split(";"));
+
+            // Affiche les incompatibilités chargées pour vérifier
+            System.out.println("Activité : " + donnees[0].trim() + " | Incompatibilités : " + String.join(", ", donnees[1].split(";")));
+        }
+        reader.close();
+    }
+
+    public void ajouterIncompatibilites(String activite, String[] incompatibilitesList) {
+        if (nombreActivites >= activites.length) {
+            System.err.println("Capacité maximale atteinte, impossible d'ajouter plus d'activités.");
+            return;
+        }
+        activites[nombreActivites] = activite;
+        incompatibilites[nombreActivites] = incompatibilitesList;
+        nombreActivites++;
+    }
+
+    public boolean estCompatible(String activite, Enfant enfant) {
+        for (int i = 0; i < nombreActivites; i++) {
+            if (activites[i].equalsIgnoreCase(activite)) {
+                String[] incompatibilitesActivite = incompatibilites[i];
+                for (String condition : enfant.getAllergies()) {
+                    if (arrayContains(incompatibilitesActivite, condition)) {
+                        return false;
+                    }
+                }
+                for (String probleme : enfant.getProblemesDeSante()) {
+                    if (arrayContains(incompatibilitesActivite, probleme)) {
+                        return false;
+                    }
+                }
+                break;
+            }
+        }
+        return true;
+    }
+
+    public String[] getActivitesParCategorie(String categorie) {
+        for (String[] categorieActivites : categoriesEtActivites) {
+            if (categorieActivites[0].equalsIgnoreCase(categorie)) {
+                String[] activitesCategorie = new String[categorieActivites.length - 1];
+                System.arraycopy(categorieActivites, 1, activitesCategorie, 0, categorieActivites.length - 1);
+                return activitesCategorie;
+            }
+        }
+        return new String[0];
+    }
+
+    public String[] getActivitesCompatiblesParCategorie(String categorie, Enfant enfant) {
+        String[] toutesActivites = getActivitesParCategorie(categorie);
+        List<String> activitesCompatibles = new ArrayList<>();
+        for (String activite : toutesActivites) {
+            if (estCompatible(activite, enfant)) {
+                activitesCompatibles.add(activite);
+            }
+        }
+        return activitesCompatibles.toArray(new String[0]);
+    }
+
+    private boolean arrayContains(String[] array, String value) {
+        if (array == null || value == null) {
+            return false;
+        }
+        for (String element : array) {
+            if (value.equalsIgnoreCase(element)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

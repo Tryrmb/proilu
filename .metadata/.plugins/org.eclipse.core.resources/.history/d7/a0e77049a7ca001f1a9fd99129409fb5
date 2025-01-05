@@ -1,0 +1,60 @@
+package ihm;
+
+import gestion.EnfantController;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class BoundApplication extends JFrame {
+    private EnfantController enfantController;
+
+    public BoundApplication(EnfantController enfantController) {
+        this.enfantController = enfantController;
+
+        // Configurer la fenêtre
+        setTitle("Gestion des Enfants");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Ajouter des composants Swing
+        JLabel label = new JLabel("Bienvenue dans l'application !");
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        add(label, BorderLayout.NORTH);
+
+        // Ajouter un bouton pour afficher les enfants
+        JButton btnAfficherEnfants = new JButton("Afficher les Enfants");
+        add(btnAfficherEnfants, BorderLayout.CENTER);
+
+        // Ajouter un ActionListener au bouton
+        btnAfficherEnfants.addActionListener(e -> afficherListeEnfants());
+    }
+
+    private void afficherListeEnfants() {
+        // Exemple d'interaction avec le contrôleur
+        Enfant[] nomsEnfants = enfantController.getEnfants();
+
+        // Créer une fenêtre modale pour afficher les enfants
+        JDialog dialog = new JDialog(this, "Liste des Enfants", true);
+        dialog.setSize(300, 200);
+
+        JList<String> list = new JList<>(nomsEnfants);
+        dialog.add(new JScrollPane(list));
+
+        dialog.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        // Initialiser le contrôleur (exemple)
+        EnfantController enfantController = new EnfantController();
+        enfantController.ajouterEnfant(new Enfant("Alice", new String[]{"Lactose"}, "Végétarien"));
+        enfantController.ajouterEnfant(new Enfant("Bob", new String[]{"Aucun"}, "Sans restriction"));
+
+        // Lancer l'application Swing
+        SwingUtilities.invokeLater(() -> {
+            BoundApplication app = new BoundApplication(enfantController);
+            app.setVisible(true);
+        });
+    }
+}

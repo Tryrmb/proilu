@@ -1,0 +1,17 @@
+// GestionAllergiesFrame.java
+package ihm;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionAllergiesFrame extends JFrame {
+    public GestionAllergiesFrame() {
+        setTitle("Gérer les Allergies");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JLabel("Gestion des Allergies", JLabel.CENTER), BorderLayout.CENTER);
+        add(panel);
+    }
+}

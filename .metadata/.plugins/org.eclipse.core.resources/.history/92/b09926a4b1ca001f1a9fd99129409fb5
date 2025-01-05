@@ -1,0 +1,59 @@
+package ihm;
+
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class GestionActivitesPanel extends JPanel {
+    private JComboBox<String> categorieBox;
+    private JComboBox<String> activitesBox;
+    private JButton ajouterActiviteButton;
+    private JTextArea affichage;
+
+    public GestionActivitesPanel() {
+        setLayout(new BorderLayout());
+
+        // Haut : Sélection de la catégorie
+        JPanel hautPanel = new JPanel(new FlowLayout());
+        categorieBox = new JComboBox<>(new String[]{"Culinaires", "Récréatives", "Forêt", "Aquatiques"});
+        activitesBox = new JComboBox<>();
+        ajouterActiviteButton = new JButton("Ajouter Activité");
+
+        hautPanel.add(new JLabel("Catégorie :"));
+        hautPanel.add(categorieBox);
+        hautPanel.add(new JLabel("Activité :"));
+        hautPanel.add(activitesBox);
+        hautPanel.add(ajouterActiviteButton);
+
+        // Centre : Affichage des activités
+        affichage = new JTextArea(10, 40);
+        affichage.setEditable(false);
+
+        // Ajout des composants
+        add(hautPanel, BorderLayout.NORTH);
+        add(new JScrollPane(affichage), BorderLayout.CENTER);
+    }
+
+    public JComboBox<String> getCategorieBox() {
+        return categorieBox;
+    }
+
+    public JComboBox<String> getActivitesBox() {
+        return activitesBox;
+    }
+
+    public JButton getAjouterActiviteButton() {
+        return ajouterActiviteButton;
+    }
+
+    public JTextArea getAffichage() {
+        return affichage;
+    }
+}

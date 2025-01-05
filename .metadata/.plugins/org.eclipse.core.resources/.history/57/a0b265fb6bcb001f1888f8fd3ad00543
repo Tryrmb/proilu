@@ -1,0 +1,97 @@
+package interfaceUtilisateur;
+
+import gestion.CompteController;
+import gestion.DataStorage;
+import gestion.EnfantController;
+import modele.Educateur;
+import modele.Parent;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BoundaryEspaceEducateurTest {
+    private DataStorage dataStorage;
+    private CompteController compteController;
+    private EnfantController enfantController;
+    private ByteArrayOutputStream outputStream;
+
+    @BeforeEach
+    void setUp() {
+        enfantController = new EnfantController();
+        dataStorage = new DataStorage(enfantController);
+        compteController = new CompteController(dataStorage);
+        outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // Ajouter des données de test
+        Parent parent = new Parent("Jean Dupont", "jean.dupont@mail.com", "password123");
+        Educateur educateur = new Educateur("Marie Curie", "marie.curie@mail.com", "educ123");
+        dataStorage.getParents()[0] = parent;
+        dataStorage.getEducateurs()[0] = educateur;
+    }
+
+    @Test
+    void testAfficherMenuEducateur() {
+        // Simuler l'authentification d'un éducateur
+        Educateur educateur = dataStorage.trouverEducateurParEmail("marie.curie@mail.com");
+        assertNotNull(educateur);
+
+        // Rediriger l'entrée standard pour simuler les choix utilisateur
+        String simulatedInput = "3\n0\n"; // Gérer les activités, puis Retour
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        BoundaryEspaceEducateur boundaryEspaceEducateur = new BoundaryEspaceEducateur(
+                "marie.curie@mail.com", compteController, enfantController, null
+        );
+        boundaryEspaceEducateur.afficherMenuEducateur();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("--- Menu Éducateur ---"));
+        assertTrue(output.contains("Gérer les activités"));
+    }
+
+    @Test
+    void testAfficherMenuParent() {
+        // Simuler l'authentification d'un parent
+        Parent parent = dataStorage.trouverParentParEmail("jean.dupont@mail.com");
+        assertNotNull(parent);
+
+        // Rediriger l'entrée standard pour simuler les choix utilisateur
+        String simulatedInput = "1\n0\n"; // Voir les activités des enfants, puis Retour
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        BoundaryEspaceParent boundaryEspaceParent = new BoundaryEspaceParent(
+                "jean.dupont@mail.com", compteController, enfantController
+        );
+        boundaryEspaceParent.afficherMenuParent();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("--- Menu Parent ---"));
+        assertTrue(output.contains("Voir les activités des enfants"));
+    }
+
+    @Test
+    void testAfficherGestionActivites() {
+        // Simuler l'authentification d'un éducateur et accès à la gestion des activités
+        Educateur educateur = dataStorage.trouverEducateurParEmail("marie.curie@mail.com");
+        assertNotNull(educateur);
+
+        // Rediriger l'entrée standard pour simuler les choix utilisateur
+        String simulatedInput = "0\n"; // Retour
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        BoundaryGestionActivitesIU gestionActivitesIU = new BoundaryGestionActivitesIU(
+                "marie.curie@mail.com", dataStorage, enfantController
+        );
+        gestionActivitesIU.afficherGestionActivites();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Gérer les activités"));
+        assertTrue(output.contains("Retour au menu principal"));
+    }
+}

@@ -1,0 +1,68 @@
+// Package : Gestion
+package gestion;
+
+import modele.Enfant;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Classe GestionnaireIncompatibilité
+ * Gère les vérifications d'incompatibilités pour les activités des enfants
+ * en fonction de leurs allergies et conditions médicales.
+ */
+public class GestionnaireIncompatibilité {
+
+    // Map pour stocker les incompatibilités des activités
+    private Map<String, List<String>> incompatibilitesActivites;
+
+    public GestionnaireIncompatibilité() {
+        this.incompatibilitesActivites = new HashMap<>();
+    }
+
+    /**
+     * Ajoute une liste d'incompatibilités pour une activité spécifique.
+     *
+     * @param activite Nom de l'activité
+     * @param incompatibilites Liste des incompatibilités (par exemple, allergies, conditions médicales)
+     */
+    public void ajouterIncompatibilites(String activite, List<String> incompatibilites) {
+        incompatibilitesActivites.put(activite, incompatibilites);
+    }
+
+    /**
+     * Vérifie si une activité est compatible avec les conditions médicales de l'enfant.
+     *
+     * @param activite Nom de l'activité
+     * @param conditionsMedicales Liste des allergies ou restrictions médicales de l'enfant
+     * @return true si compatible, false sinon
+     */
+    public boolean estCompatible(String activite, List<String> conditionsMedicales) {
+        List<String> incompatibilites = incompatibilitesActivites.get(activite);
+
+        if (incompatibilites == null) {
+            // Pas d'incompatibilités définies pour cette activité
+            return true;
+        }
+
+        for (String condition : conditionsMedicales) {
+            if (incompatibilites.contains(condition)) {
+                return false; // Une incompatibilité détectée
+            }
+        }
+
+        return true; // Aucune incompatibilité trouvée
+    }
+
+    /**
+     * Affiche les incompatibilités pour toutes les activités.
+     */
+    public void afficherIncompatibilites() {
+        System.out.println("\n--- Incompatibilités des Activités ---");
+        for (Map.Entry<String, List<String>> entry : incompatibilitesActivites.entrySet()) {
+            System.out.println("Activité : " + entry.getKey());
+            System.out.println("Incompatibilités : " + entry.getValue());
+        }
+    }
+}

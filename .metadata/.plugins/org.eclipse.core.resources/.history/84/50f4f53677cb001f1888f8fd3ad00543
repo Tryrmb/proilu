@@ -1,0 +1,15 @@
+package tests.modele;
+
+import modele.ActiviteRecreative;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ActiviteRecreativeTest {
+
+    @Test
+    void testCreerActiviteRecreative() {
+        ActiviteRecreative activite = new ActiviteRecreative("Danse", "Apprendre les pas de danse basiques");
+        assertEquals("Danse", activite.getNom());
+        assertEquals("Apprendre les pas de danse basiques", activite.getDescription());
+    }
+}

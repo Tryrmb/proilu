@@ -1,0 +1,83 @@
+package modele;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Classe Enfant
+ * Représente un enfant avec ses allergies, son régime alimentaire, et ses activités.
+ */
+public class Enfant {
+    private String nom;
+    private List<String> allergies; // Liste des allergies
+    private String regimeAlimentaire;
+    private List<String> activites; // Activités de l'enfant
+    private List<String> problemesDeSante; // Liste des problèmes de santé
+    private String bilan; // Bilan individuel
+
+    // Constructeur
+    public Enfant(String nom, String allergies, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = new ArrayList<>(Arrays.asList(allergies.split(", ")));
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.activites = new ArrayList<>();
+        this.problemesDeSante = new ArrayList<>();
+        this.bilan = "";
+    }
+
+
+    // Getters
+    public String getNom() {
+        return nom;
+    }
+
+    public List<String> getAllergies() {
+        return new ArrayList<>(allergies); // Retourne une copie pour éviter les modifications externes
+    }
+
+    public String getRegimeAlimentaire() {
+        return regimeAlimentaire;
+    }
+
+    public List<String> getActivites() {
+        return new ArrayList<>(activites);
+    }
+
+    public List<String> getProblemesDeSante() {
+        return new ArrayList<>(problemesDeSante);
+    }
+
+    public String getBilan() {
+        return bilan;
+    }
+
+    // Setters et Ajouts
+    public void ajouterAllergie(String allergie) {
+        if (allergie != null && !allergies.contains(allergie)) {
+            allergies.add(allergie);
+        }
+    }
+
+    public boolean supprimerAllergie(String allergie) {
+        return allergie != null && allergies.remove(allergie);
+    }
+
+    public void ajouterActivite(String activite) {
+        if (activite != null && !activites.contains(activite)) {
+            activites.add(activite);
+        }
+    }
+
+    public void ajouterProblemeDeSante(String probleme) {
+        if (probleme != null && !problemesDeSante.contains(probleme)) {
+            problemesDeSante.add(probleme);
+        }
+    }
+
+    public void setBilan(String bilan) {
+        if (bilan != null) {
+            this.bilan = bilan;
+        }
+    }
+}

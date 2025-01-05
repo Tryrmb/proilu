@@ -1,0 +1,17 @@
+package modele;
+
+public class ActiviteCulinaire extends Activite {
+
+	@Override
+	public void verifierCompatibiliteParticipants() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void gererIncompatibilites() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

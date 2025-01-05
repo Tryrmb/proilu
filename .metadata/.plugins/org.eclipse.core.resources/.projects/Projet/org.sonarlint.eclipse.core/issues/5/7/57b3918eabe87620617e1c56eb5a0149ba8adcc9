@@ -1,0 +1,15 @@
+
+…
+java:S1192@"JDefine a constant instead of duplicating this literal "Enfant : " 3 times.8ž–ã”Ã2b a5f07477b3955c64200b413db43a6ce0h
+•
+java:S1192<"ZDefine a constant instead of duplicating this literal "Aucun enfant enregistrÃ©." 3 times.8ž–ã”Ã2b 2c81a4733c807f148c630cd6fb210952h
+j
+java:S2387"/"parent" is the name of a field in "Component".8ž–ã”Ã2b d0e45878043844ffc41aac437e86b602h
+c
+java:S1948"(Make "parent" transient or serializable.8ž–ã”Ã2b d0e45878043844ffc41aac437e86b602h
+‡
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".8½Âö”Ã2b 704073f79b13c201cb964af8eea18b6eh
+
+java:S37766"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.8½Âö”Ã2b a8d46fb8d9cd105ebf53195e41ad70a1h
+r
+java:S1128	"7Remove this unused import 'java.awt.event.ActionEvent'.8½Âö”Ã2b b62a6376d44eb6e083dd2739092a93b6h

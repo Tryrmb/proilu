@@ -1,0 +1,73 @@
+package modele;
+
+/**
+ * Classe Enfant
+ * Représente un enfant avec ses données.
+ */
+public class Enfant {
+    private String nom;
+    private String[] allergies;
+    private String regimeAlimentaire;
+    private String[] activites;
+    private String[] problemesDeSante;
+    private String bilan;
+    private int indexActivites;
+    private int indexProblemesDeSante;
+    private static final int MAX_ACTIVITES = 10;
+    private static final int MAX_PROBLEMES = 5;
+
+    public Enfant(String nom, String[] allergies, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = allergies;
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.activites = new String[MAX_ACTIVITES];
+        this.problemesDeSante = new String[MAX_PROBLEMES];
+        this.bilan = "";
+        this.indexActivites = 0;
+        this.indexProblemesDeSante = 0;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String[] getAllergies() {
+        return allergies;
+    }
+
+    public String getRegimeAlimentaire() {
+        return regimeAlimentaire;
+    }
+
+    public void ajouterActivite(String activite) {
+        if (indexActivites < MAX_ACTIVITES) {
+            activites[indexActivites++] = activite;
+        }
+    }
+
+    public String[] getActivites() {
+        String[] result = new String[indexActivites];
+        System.arraycopy(activites, 0, result, 0, indexActivites);
+        return result;
+    }
+
+    public void ajouterProblemeDeSante(String probleme) {
+        if (indexProblemesDeSante < MAX_PROBLEMES) {
+            problemesDeSante[indexProblemesDeSante++] = probleme;
+        }
+    }
+
+    public String[] getProblemesDeSante() {
+        String[] result = new String[indexProblemesDeSante];
+        System.arraycopy(problemesDeSante, 0, result, 0, indexProblemesDeSante);
+        return result;
+    }
+
+    public String getBilan() {
+        return bilan;
+    }
+
+    public void setBilan(String bilan) {
+        this.bilan = bilan;
+    }
+}

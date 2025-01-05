@@ -1,0 +1,29 @@
+
+e	java:S106P"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106#"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+…
+java:S1192?"JDefine a constant instead of duplicating this literal "Enfant : " 3 times.8î“›ÜÂ2b a5f07477b3955c64200b413db43a6ce0h
+e	java:S106""+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106J"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106N"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106"+Replace this use of System.out by a logger.8¿İŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106;"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106X"+Replace this use of System.out by a logger.8î“›ÜÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106a"+Replace this use of System.out by a logger.8î“›ÜÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+o
+java:S1068"4Remove this unused "enfantController" private field.8ÀİŸÈÂ2b 4ba468131e29dda1d67736fefc8cb7fch
+e	java:S106C"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106^"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106!"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106?"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+o
+java:S1068"4Remove this unused "compteController" private field.8ş®…Ã2b 25fddcd81cc50b825710db3108794d35h
+e	java:S106O"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S1062"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106c"+Replace this use of System.out by a logger.8ş®…Ã2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S1065"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.b 79cfc642a77b72d848920fa9c0cd40b9h
+e	java:S106"+Replace this use of System.out by a logger.8¿İŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106 "+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106U"+Replace this use of System.out by a logger.8ÀİŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh
+e	java:S106"+Replace this use of System.out by a logger.8¿İŸÈÂ2b bb1c3f2ea781263d3a2bb92b06a2061fh

@@ -1,0 +1,41 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
+
+public class GestionActivitesIU extends JFrame {
+    public GestionActivitesIU(String emailEducateur, DataStorage dataStorage) {
+        setTitle("Gestion des Activités");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        JTextArea activitesTextArea = new JTextArea();
+        activitesTextArea.setEditable(false);
+
+        // Récupération des enfants et affichage des activités
+        var educateur = dataStorage.trouverEducateurParEmail(emailEducateur);
+        if (educateur != null) {
+            List<Enfant> enfants = educateur.getEnfants(); // Si vous avez une méthode pour récupérer les enfants d'un éducateur
+            for (Enfant enfant : enfants) {
+                activitesTextArea.append("Enfant : " + enfant.getNom() + "\n");
+                activitesTextArea.append(" - Activités : " + String.join(", ", enfant.getActivites()) + "\n\n");
+            }
+        } else {
+            activitesTextArea.setText("Aucun éducateur trouvé pour l'email fourni.");
+        }
+
+        JButton closeButton = new JButton("Fermer");
+        closeButton.addActionListener(e -> dispose());
+
+        panel.add(new JScrollPane(activitesTextArea), BorderLayout.CENTER);
+        panel.add(closeButton, BorderLayout.SOUTH);
+
+        add(panel);
+    }
+}
+

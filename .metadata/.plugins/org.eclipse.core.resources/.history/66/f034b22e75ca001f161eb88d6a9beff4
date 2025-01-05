@@ -1,0 +1,68 @@
+package modele;
+
+import java.util.Arrays;
+
+public class Enfant {
+    private String nom;
+    private String[] allergies;
+    private String regimeAlimentaire;
+    private String[] activites;
+    private String[] problemesDeSante;
+    private String bilan;
+    private static final int MAX_ALLERGIES = 10;
+    private static final int MAX_ACTIVITES = 10;
+    private static final int MAX_PROBLEMES = 10;
+
+    public Enfant(String nom, String[] allergies, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = Arrays.copyOf(allergies, MAX_ALLERGIES);
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.activites = new String[MAX_ACTIVITES];
+        this.problemesDeSante = new String[MAX_PROBLEMES];
+        this.bilan = "";
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String[] getAllergies() {
+        return Arrays.copyOf(allergies, allergies.length);
+    }
+
+    public void ajouterActivite(String activite) {
+        for (int i = 0; i < activites.length; i++) {
+            if (activites[i] == null) {
+                activites[i] = activite;
+                return;
+            }
+        }
+        System.err.println("Impossible d'ajouter l'activité : Limite atteinte.");
+    }
+
+    public String[] getActivites() {
+        return Arrays.copyOf(activites, activites.length);
+    }
+
+    public void ajouterProblemeDeSante(String probleme) {
+        for (int i = 0; i < problemesDeSante.length; i++) {
+            if (problemesDeSante[i] == null) {
+                problemesDeSante[i] = probleme;
+                return;
+            }
+        }
+        System.err.println("Impossible d'ajouter un problème de santé : Limite atteinte.");
+    }
+
+    public String[] getProblemesDeSante() {
+        return Arrays.copyOf(problemesDeSante, problemesDeSante.length);
+    }
+
+    public void setBilan(String bilan) {
+        this.bilan = bilan;
+    }
+
+    public String getBilan() {
+        return bilan;
+    }
+}

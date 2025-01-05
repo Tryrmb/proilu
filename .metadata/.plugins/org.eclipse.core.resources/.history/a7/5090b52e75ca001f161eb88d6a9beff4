@@ -1,0 +1,72 @@
+package gestion;
+
+import modele.Enfant;
+
+public class GestionnaireIncompatibilité {
+    private String[] activites;
+    private String[][] incompatibilites;
+    private String[][] categories;
+    private static final int MAX_ACTIVITES = 50;
+    private static final int MAX_CATEGORIES = 10;
+
+    public GestionnaireIncompatibilité() {
+        activites = new String[MAX_ACTIVITES];
+        incompatibilites = new String[MAX_ACTIVITES][10];
+        categories = new String[MAX_CATEGORIES][6];
+        initialiserCategoriesActivites();
+    }
+
+    private void initialiserCategoriesActivites() {
+        categories[0] = new String[]{"Activités Culinaires", "Gâteau aux pommes", "Cookie aux chocolats", "Cupcakes aux fraises", "Hamburger maison", "Pizza végétarienne"};
+        categories[1] = new String[]{"Activités Récréatives", "Peinture avec les doigts", "Jeux d'eau sensoriels", "Parcours motricité", "Conte interactif", "Atelier pâte à modeler"};
+        categories[2] = new String[]{"Sorties en Forêt", "Chasse aux trésors nature", "Construction cabane miniature", "Comptine en plein air", "Parcours sensoriels", "Observation animaux et insectes"};
+        categories[3] = new String[]{"Sorties Aquatiques", "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur"};
+    }
+
+    public void ajouterIncompatibilites(String activite, String[] incompatibilitesActivite) {
+        for (int i = 0; i < activites.length; i++) {
+            if (activites[i] == null) {
+                activites[i] = activite;
+                incompatibilites[i] = incompatibilitesActivite.clone();
+                break;
+            }
+        }
+    }
+
+    public boolean estCompatible(String activite, Enfant enfant) {
+        for (int i = 0; i < activites.length; i++) {
+            if (activites[i] != null && activites[i].equals(activite)) {
+                for (String allergie : enfant.getAllergies()) {
+                    for (String incompatibilite : incompatibilites[i]) {
+                        if (allergie != null && allergie.equals(incompatibilite)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public String[] getActivitesParCategorie(String categorie) {
+        for (String[] cat : categories) {
+            if (cat[0] != null && cat[0].equals(categorie)) {
+                return new String[]{cat[1], cat[2], cat[3], cat[4], cat[5]};
+            }
+        }
+        return new String[0];
+    }
+
+    public String[] getActivitesCompatiblesParCategorie(String categorie, Enfant enfant) {
+        String[] toutesActivites = getActivitesParCategorie(categorie);
+        String[] activitesCompatibles = new String[toutesActivites.length];
+        int index = 0;
+
+        for (String activite : toutesActivites) {
+            if (activite != null && estCompatible(activite, enfant)) {
+                activitesCompatibles[index++] = activite;
+            }
+        }
+        return activitesCompatibles;
+    }
+}

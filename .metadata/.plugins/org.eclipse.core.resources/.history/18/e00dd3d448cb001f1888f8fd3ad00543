@@ -1,0 +1,44 @@
+package test.enumeration;
+
+import enumeration.TypeActivite;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class TypeActiviteTest {
+
+    @Test
+    void testEnumValues() {
+        // Vérifie que les valeurs de l'énumération sont correctes
+        TypeActivite[] valeurs = TypeActivite.values();
+        assertArrayEquals(new TypeActivite[]{
+                TypeActivite.CULINAIRE,
+                TypeActivite.RECREATIVE,
+                TypeActivite.SORTIE_FORET,
+                TypeActivite.SORTIE_AQUATIQUE
+        }, valeurs);
+    }
+
+    @Test
+    void testEnumValueOf() {
+        // Vérifie que valueOf fonctionne pour chaque élément
+        assertEquals(TypeActivite.CULINAIRE, TypeActivite.valueOf("CULINAIRE"));
+        assertEquals(TypeActivite.RECREATIVE, TypeActivite.valueOf("RECREATIVE"));
+        assertEquals(TypeActivite.SORTIE_FORET, TypeActivite.valueOf("SORTIE_FORET"));
+        assertEquals(TypeActivite.SORTIE_AQUATIQUE, TypeActivite.valueOf("SORTIE_AQUATIQUE"));
+    }
+
+    @Test
+    void testEnumToString() {
+        // Vérifie que toString renvoie le nom correct
+        assertEquals("CULINAIRE", TypeActivite.CULINAIRE.toString());
+        assertEquals("RECREATIVE", TypeActivite.RECREATIVE.toString());
+        assertEquals("SORTIE_FORET", TypeActivite.SORTIE_FORET.toString());
+        assertEquals("SORTIE_AQUATIQUE", TypeActivite.SORTIE_AQUATIQUE.toString());
+    }
+
+    @Test
+    void testEnumInvalidValueOf() {
+        // Vérifie qu'une exception est levée pour une valeur invalide
+        assertThrows(IllegalArgumentException.class, () -> TypeActivite.valueOf("INVALID"));
+    }
+}

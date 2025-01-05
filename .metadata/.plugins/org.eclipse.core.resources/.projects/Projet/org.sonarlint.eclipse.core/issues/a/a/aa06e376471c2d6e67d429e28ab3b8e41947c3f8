@@ -1,0 +1,7 @@
+
+m
+java:S1948"2Make "compteController" transient or serializable.8°›Á’Ã2b 25fddcd81cc50b825710db3108794d35h
+‡
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".8°›Á’Ã2b 704073f79b13c201cb964af8eea18b6eh
+g
+java:S1068",Remove this unused "userType" private field.8°›Á’Ã2b 3d88fcbaa3581c4957147ef9ad47ec5eh

@@ -1,0 +1,17 @@
+// SanteEnfantsFrame.java
+package ihm;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SanteEnfantsFrame extends JFrame {
+    public SanteEnfantsFrame() {
+        setTitle("Informations Santé des Enfants");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JLabel("Informations Santé des Enfants", JLabel.CENTER), BorderLayout.CENTER);
+        add(panel);
+    }
+}

@@ -1,0 +1,39 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Parent;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionBilanIU extends JFrame {
+    public GestionBilanIU(String emailParent, DataStorage dataStorage, String userType) {
+        setTitle("Gestion des Bilans - Parent");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        JTextArea bilansTextArea = new JTextArea();
+        bilansTextArea.setEditable(false);
+
+        // Récupération du parent et affichage des bilans
+        Parent parent = dataStorage.trouverParentParEmail(emailParent);
+        if (parent != null) {
+            parent.getEnfants().forEach(enfant -> {
+                bilansTextArea.append("Enfant : " + enfant.getNom() + "\n");
+                bilansTextArea.append(" - Bilan : " + (enfant.getBilan().isEmpty() ? "Non disponible" : enfant.getBilan()) + "\n\n");
+            });
+        } else {
+            bilansTextArea.setText("Aucun parent trouvé pour l'email fourni.");
+        }
+
+        JButton closeButton = new JButton("Fermer");
+        closeButton.addActionListener(e -> dispose());
+
+        panel.add(new JScrollPane(bilansTextArea), BorderLayout.CENTER);
+        panel.add(closeButton, BorderLayout.SOUTH);
+
+        add(panel);
+    }
+}
+

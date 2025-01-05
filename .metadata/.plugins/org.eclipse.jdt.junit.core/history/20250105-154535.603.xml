@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EnfantTest" project="Projet" tests="5" started="5" failures="3" errors="0" ignored="0">
+  <testsuite name="modele.EnfantTest" time="0.016" displayname="EnfantTest" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]">
+    <testcase name="testSupprimerAllergie" classname="modele.EnfantTest" time="0.0" displayname="testSupprimerAllergie()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testSupprimerAllergie()]"/>
+    <testcase name="testAjouterAllergie" classname="modele.EnfantTest" time="0.009" displayname="testAjouterAllergie()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testAjouterAllergie()]">
+      <failure>
+        <expected>1</expected>
+        <actual>10</actual>
+        org.opentest4j.AssertionFailedError: array lengths differ, expected: &lt;1&gt; but was: &lt;10&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:428)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:335)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)&#13;
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)&#13;
+	at modele.EnfantTest.testAjouterAllergie(EnfantTest.java:13)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testAjouterActivite" classname="modele.EnfantTest" time="0.003" displayname="testAjouterActivite()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testAjouterActivite()]">
+      <failure>
+        <expected>1</expected>
+        <actual>10</actual>
+        org.opentest4j.AssertionFailedError: array lengths differ, expected: &lt;1&gt; but was: &lt;10&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:428)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:335)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)&#13;
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)&#13;
+	at modele.EnfantTest.testAjouterActivite(EnfantTest.java:28)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testAjouterProblemeDeSante" classname="modele.EnfantTest" time="0.001" displayname="testAjouterProblemeDeSante()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testAjouterProblemeDeSante()]">
+      <failure>
+        <expected>1</expected>
+        <actual>10</actual>
+        org.opentest4j.AssertionFailedError: array lengths differ, expected: &lt;1&gt; but was: &lt;10&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:428)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:335)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)&#13;
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)&#13;
+	at modele.EnfantTest.testAjouterProblemeDeSante(EnfantTest.java:35)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testSetBilan" classname="modele.EnfantTest" time="0.002" displayname="testSetBilan()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testSetBilan()]"/>
+  </testsuite>
+</testrun>

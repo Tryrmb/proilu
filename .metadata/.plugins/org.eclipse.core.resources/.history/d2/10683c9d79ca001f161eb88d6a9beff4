@@ -1,0 +1,25 @@
+package main;
+
+import gestion.ActiviteController;
+import gestion.CompteController;
+import gestion.EnfantController;
+import modele.Activite;
+import modele.Compte;
+import modele.Enfant;
+
+public class EnfantPro {
+
+    public static void main(String[] args) {
+        ActiviteController activiteController = new ActiviteController();
+        EnfantController enfantController = new EnfantController();
+        CompteController compteController = new CompteController();
+
+        activiteController.ajouterActivite(new Activite("Cuisine"));
+        enfantController.ajouterEnfant(new Enfant("Alice", 8));
+        compteController.ajouterCompte(new Compte("educateur1", "password"));
+
+        activiteController.afficherActivites();
+        enfantController.afficherEnfants();
+        compteController.afficherComptes();
+    }
+}

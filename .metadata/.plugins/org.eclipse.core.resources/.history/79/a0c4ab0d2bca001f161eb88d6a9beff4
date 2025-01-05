@@ -1,0 +1,128 @@
+package modele;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+/**
+ * Classe Enfant
+ * Représente un enfant avec ses allergies, son régime alimentaire, et ses activités.
+ */
+public class Enfant {
+    private String nom;
+    private String[] allergies; // Tableau des allergies
+    private String regimeAlimentaire;
+    private String[] activites; // Tableau des activités de l'enfant
+    private String[] problemesDeSante; // Tableau des problèmes de santé
+    private String bilan; // Bilan individuel
+
+    private int nombreAllergies;
+    private int nombreActivites;
+    private int nombreProblemesDeSante;
+
+    private static final int MAX_ALLERGIES = 10;
+    private static final int MAX_ACTIVITES = 10;
+    private static final int MAX_PROBLEMES = 10;
+
+    // Constructeur existant avec données brutes
+    public Enfant(String nom, String allergiesRaw, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = new String[MAX_ALLERGIES];
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.activites = new String[MAX_ACTIVITES];
+        this.problemesDeSante = new String[MAX_PROBLEMES];
+        this.bilan = "";
+
+        String[] allergiesArray = allergiesRaw.split(", ");
+        this.nombreAllergies = Math.min(allergiesArray.length, MAX_ALLERGIES);
+        System.arraycopy(allergiesArray, 0, this.allergies, 0, this.nombreAllergies);
+
+        this.nombreActivites = 0;
+        this.nombreProblemesDeSante = 0;
+    }
+
+    // Constructeur avec une liste d'allergies
+    public Enfant(String nom, String[] allergies, String regimeAlimentaire) {
+        this.nom = nom;
+        this.allergies = new ArrayList<>(Arrays.asList(allergies));
+        this.regimeAlimentaire = regimeAlimentaire;
+        this.activites = new String[10]; // Taille initiale
+        this.problemesDeSante = new String[10]; // Taille initiale
+        this.bilan = "";
+    }
+
+
+    // Getters et méthodes associées
+    public String getNom() {
+        return nom;
+    }
+
+    public String[] getAllergies() {
+        String[] result = new String[nombreAllergies];
+        System.arraycopy(allergies, 0, result, 0, nombreAllergies);
+        return result;
+    }
+
+    public void ajouterAllergie(String allergie) {
+        if (nombreAllergies < MAX_ALLERGIES && !contient(allergies, allergie, nombreAllergies)) {
+            allergies[nombreAllergies++] = allergie;
+        }
+    }
+
+    public boolean supprimerAllergie(String allergie) {
+        for (int i = 0; i < nombreAllergies; i++) {
+            if (allergies[i].equals(allergie)) {
+                // Décalage des éléments suivants
+                System.arraycopy(allergies, i + 1, allergies, i, nombreAllergies - i - 1);
+                nombreAllergies--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getRegimeAlimentaire() {
+        return regimeAlimentaire;
+    }
+
+    public String[] getActivites() {
+        String[] result = new String[nombreActivites];
+        System.arraycopy(activites, 0, result, 0, nombreActivites);
+        return result;
+    }
+
+    public void ajouterActivite(String activite) {
+        if (nombreActivites < MAX_ACTIVITES) {
+            activites[nombreActivites++] = activite;
+        }
+    }
+
+    public String[] getProblemesDeSante() {
+        String[] result = new String[nombreProblemesDeSante];
+        System.arraycopy(problemesDeSante, 0, result, 0, nombreProblemesDeSante);
+        return result;
+    }
+
+    public void ajouterProblemeDeSante(String probleme) {
+        if (nombreProblemesDeSante < MAX_PROBLEMES) {
+            problemesDeSante[nombreProblemesDeSante++] = probleme;
+        }
+    }
+
+    public String getBilan() {
+        return bilan;
+    }
+
+    public void setBilan(String bilan) {
+        this.bilan = bilan;
+    }
+
+    // Méthode utilitaire pour vérifier si un tableau contient un élément
+    private boolean contient(String[] array, String valeur, int taille) {
+        for (int i = 0; i < taille; i++) {
+            if (array[i].equals(valeur)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}

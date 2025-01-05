@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GestionnaireIncompatibilitéTest" project="Projet" tests="26" started="26" failures="3" errors="8" ignored="0">
+  <testsuite name="modele.CompteTest" time="0.003" displayname="CompteTest" uniqueid="[engine:junit-jupiter]/[class:modele.CompteTest]">
+    <testcase name="testCompteCreation" classname="modele.CompteTest" time="0.003" displayname="testCompteCreation()" uniqueid="[engine:junit-jupiter]/[class:modele.CompteTest]/[method:testCompteCreation()]">
+      <error>java.lang.Error: Unresolved compilation problems: 
+	The declared package "tests.modele" does not match the expected package "modele"
+	The constructor Compte(String, String, String) is undefined
+	The method getNom() is undefined for the type Compte
+&#13;
+	at modele.CompteTest.&lt;init&gt;(CompteTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="modele.EducateurTest" time="0.011" displayname="EducateurTest" uniqueid="[engine:junit-jupiter]/[class:modele.EducateurTest]">
+    <testcase name="testEducateurCreation" classname="modele.EducateurTest" time="0.011" displayname="testEducateurCreation()" uniqueid="[engine:junit-jupiter]/[class:modele.EducateurTest]/[method:testEducateurCreation()]"/>
+  </testsuite>
+  <testsuite name="modele.ActiviteCulinaireTest" time="0.0" displayname="ActiviteCulinaireTest" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteCulinaireTest]">
+    <testcase name="testCreerActiviteCulinaire" classname="modele.ActiviteCulinaireTest" time="0.0" displayname="testCreerActiviteCulinaire()" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteCulinaireTest]/[method:testCreerActiviteCulinaire()]">
+      <error>java.lang.Error: Unresolved compilation problems: 
+	The declared package "tests.modele" does not match the expected package "modele"
+	The constructor ActiviteCulinaire(String, String) is undefined
+&#13;
+	at modele.ActiviteCulinaireTest.&lt;init&gt;(ActiviteCulinaireTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="modele.ParentTest" time="0.001" displayname="ParentTest" uniqueid="[engine:junit-jupiter]/[class:modele.ParentTest]">
+    <testcase name="testTrouverEnfantParNom" classname="modele.ParentTest" time="0.0" displayname="testTrouverEnfantParNom()" uniqueid="[engine:junit-jupiter]/[class:modele.ParentTest]/[method:testTrouverEnfantParNom()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	The declared package "tests.modele" does not match the expected package "modele"
+&#13;
+	at modele.ParentTest.&lt;init&gt;(ParentTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testAjouterEnfant" classname="modele.ParentTest" time="0.0" displayname="testAjouterEnfant()" uniqueid="[engine:junit-jupiter]/[class:modele.ParentTest]/[method:testAjouterEnfant()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	The declared package "tests.modele" does not match the expected package "modele"
+&#13;
+	at modele.ParentTest.&lt;init&gt;(ParentTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="modele.ActiviteRecreativeTest" time="0.0" displayname="ActiviteRecreativeTest" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteRecreativeTest]">
+    <testcase name="testCreerActiviteRecreative" classname="modele.ActiviteRecreativeTest" time="0.0" displayname="testCreerActiviteRecreative()" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteRecreativeTest]/[method:testCreerActiviteRecreative()]">
+      <error>java.lang.Error: Unresolved compilation problems: 
+	The declared package "tests.modele" does not match the expected package "modele"
+	The constructor ActiviteRecreative(String, String) is undefined
+&#13;
+	at modele.ActiviteRecreativeTest.&lt;init&gt;(ActiviteRecreativeTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="modele.EnfantTest" time="0.008" displayname="EnfantTest" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]">
+    <testcase name="testSupprimerAllergie" classname="modele.EnfantTest" time="0.001" displayname="testSupprimerAllergie()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testSupprimerAllergie()]"/>
+    <testcase name="testAjouterAllergie" classname="modele.EnfantTest" time="0.003" displayname="testAjouterAllergie()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testAjouterAllergie()]">
+      <failure>
+        <expected>1</expected>
+        <actual>10</actual>
+        org.opentest4j.AssertionFailedError: array lengths differ, expected: &lt;1&gt; but was: &lt;10&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:428)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:335)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)&#13;
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)&#13;
+	at modele.EnfantTest.testAjouterAllergie(EnfantTest.java:13)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testAjouterActivite" classname="modele.EnfantTest" time="0.001" displayname="testAjouterActivite()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testAjouterActivite()]">
+      <failure>
+        <expected>1</expected>
+        <actual>10</actual>
+        org.opentest4j.AssertionFailedError: array lengths differ, expected: &lt;1&gt; but was: &lt;10&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:428)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:335)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)&#13;
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)&#13;
+	at modele.EnfantTest.testAjouterActivite(EnfantTest.java:28)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testAjouterProblemeDeSante" classname="modele.EnfantTest" time="0.001" displayname="testAjouterProblemeDeSante()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testAjouterProblemeDeSante()]">
+      <failure>
+        <expected>1</expected>
+        <actual>10</actual>
+        org.opentest4j.AssertionFailedError: array lengths differ, expected: &lt;1&gt; but was: &lt;10&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:428)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:335)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:159)&#13;
+	at org.junit.jupiter.api.AssertArrayEquals.assertArrayEquals(AssertArrayEquals.java:155)&#13;
+	at org.junit.jupiter.api.Assertions.assertArrayEquals(Assertions.java:1456)&#13;
+	at modele.EnfantTest.testAjouterProblemeDeSante(EnfantTest.java:35)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testSetBilan" classname="modele.EnfantTest" time="0.001" displayname="testSetBilan()" uniqueid="[engine:junit-jupiter]/[class:modele.EnfantTest]/[method:testSetBilan()]"/>
+  </testsuite>
+  <testsuite name="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.001" displayname="BoundaryEspaceEducateurTest" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]">
+    <testcase name="testAfficherMenuParent" classname="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.0" displayname="testAfficherMenuParent()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]/[method:testAfficherMenuParent()]">
+      <error>java.lang.Error: Unresolved compilation problems: 
+	The declared package "tests.interfaceUtilisateur" does not match the expected package "interfaceUtilisateur"
+	The constructor BoundaryGestionActivitesIU(String, DataStorage, EnfantController) is undefined
+	The method afficherGestionActivites() is undefined for the type BoundaryGestionActivitesIU
+&#13;
+	at interfaceUtilisateur.BoundaryEspaceEducateurTest.&lt;init&gt;(BoundaryEspaceEducateurTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testAfficherGestionActivites" classname="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.0" displayname="testAfficherGestionActivites()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]/[method:testAfficherGestionActivites()]">
+      <error>java.lang.Error: Unresolved compilation problems: 
+	The declared package "tests.interfaceUtilisateur" does not match the expected package "interfaceUtilisateur"
+	The constructor BoundaryGestionActivitesIU(String, DataStorage, EnfantController) is undefined
+	The method afficherGestionActivites() is undefined for the type BoundaryGestionActivitesIU
+&#13;
+	at interfaceUtilisateur.BoundaryEspaceEducateurTest.&lt;init&gt;(BoundaryEspaceEducateurTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="testAfficherMenuEducateur" classname="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.0" displayname="testAfficherMenuEducateur()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]/[method:testAfficherMenuEducateur()]">
+      <error>java.lang.Error: Unresolved compilation problems: 
+	The declared package "tests.interfaceUtilisateur" does not match the expected package "interfaceUtilisateur"
+	The constructor BoundaryGestionActivitesIU(String, DataStorage, EnfantController) is undefined
+	The method afficherGestionActivites() is undefined for the type BoundaryGestionActivitesIU
+&#13;
+	at interfaceUtilisateur.BoundaryEspaceEducateurTest.&lt;init&gt;(BoundaryEspaceEducateurTest.java:1)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at java.base/java.util.Optional.orElseGet(Optional.java:364)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="enumeration.TypeActiviteTest" time="0.004" displayname="TypeActiviteTest" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]">
+    <testcase name="testEnumValues" classname="enumeration.TypeActiviteTest" time="0.0" displayname="testEnumValues()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumValues()]"/>
+    <testcase name="testEnumToString" classname="enumeration.TypeActiviteTest" time="0.001" displayname="testEnumToString()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumToString()]"/>
+    <testcase name="testEnumInvalidValueOf" classname="enumeration.TypeActiviteTest" time="0.002" displayname="testEnumInvalidValueOf()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumInvalidValueOf()]"/>
+    <testcase name="testEnumValueOf" classname="enumeration.TypeActiviteTest" time="0.0" displayname="testEnumValueOf()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumValueOf()]"/>
+  </testsuite>
+  <testsuite name="gestion.DataStorageTest" time="0.005" displayname="DataStorageTest" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]">
+    <testcase name="testAjouterEtTrouverEducateur" classname="gestion.DataStorageTest" time="0.002" displayname="testAjouterEtTrouverEducateur()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAjouterEtTrouverEducateur()]"/>
+    <testcase name="testAjouterEtTrouverParent" classname="gestion.DataStorageTest" time="0.001" displayname="testAjouterEtTrouverParent()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAjouterEtTrouverParent()]"/>
+    <testcase name="testAfficherParents" classname="gestion.DataStorageTest" time="0.001" displayname="testAfficherParents()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAfficherParents()]"/>
+    <testcase name="testAjouterEnfantEtTrouver" classname="gestion.DataStorageTest" time="0.001" displayname="testAjouterEnfantEtTrouver()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAjouterEnfantEtTrouver()]"/>
+  </testsuite>
+  <testsuite name="gestion.GestionnaireIncompatibilitéTest" time="0.002" displayname="GestionnaireIncompatibilitéTest" uniqueid="[engine:junit-jupiter]/[class:gestion.GestionnaireIncompatibilitéTest]">
+    <testcase name="testAjouterEtVerifierIncompatibilites" classname="gestion.GestionnaireIncompatibilitéTest" time="0.0" displayname="testAjouterEtVerifierIncompatibilites()" uniqueid="[engine:junit-jupiter]/[class:gestion.GestionnaireIncompatibilitéTest]/[method:testAjouterEtVerifierIncompatibilites()]"/>
+    <testcase name="testGetActivitesCompatibles" classname="gestion.GestionnaireIncompatibilitéTest" time="0.0" displayname="testGetActivitesCompatibles()" uniqueid="[engine:junit-jupiter]/[class:gestion.GestionnaireIncompatibilitéTest]/[method:testGetActivitesCompatibles()]"/>
+  </testsuite>
+  <testsuite name="gestion.CompteControllerTest" time="0.002" displayname="CompteControllerTest" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]">
+    <testcase name="testVerifierIdentifiantsParent" classname="gestion.CompteControllerTest" time="0.001" displayname="testVerifierIdentifiantsParent()" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]/[method:testVerifierIdentifiantsParent()]"/>
+    <testcase name="testVerifierIdentifiantsEducateur" classname="gestion.CompteControllerTest" time="0.001" displayname="testVerifierIdentifiantsEducateur()" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]/[method:testVerifierIdentifiantsEducateur()]"/>
+  </testsuite>
+</testrun>

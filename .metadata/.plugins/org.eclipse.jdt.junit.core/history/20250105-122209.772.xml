@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CompteControllerTest" project="Projet" tests="2" started="2" failures="2" errors="0" ignored="0">
+  <testsuite name="gestion.CompteControllerTest" time="0.006" displayname="CompteControllerTest" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]">
+    <testcase name="testVerifierIdentifiantsParent" classname="gestion.CompteControllerTest" time="0.0" displayname="testVerifierIdentifiantsParent()" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]/[method:testVerifierIdentifiantsParent()]">
+      <failure>
+        <expected>true</expected>
+        <actual>false</actual>
+        org.opentest4j.AssertionFailedError: Identifiants corrects pour parent ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)&#13;
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)&#13;
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)&#13;
+	at gestion.CompteControllerTest.testVerifierIdentifiantsParent(CompteControllerTest.java:32)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testVerifierIdentifiantsEducateur" classname="gestion.CompteControllerTest" time="0.006" displayname="testVerifierIdentifiantsEducateur()" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]/[method:testVerifierIdentifiantsEducateur()]">
+      <failure>
+        <expected>true</expected>
+        <actual>false</actual>
+        org.opentest4j.AssertionFailedError: Identifiants corrects pour éducateur ==&gt; expected: &lt;true&gt; but was: &lt;false&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)&#13;
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)&#13;
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:214)&#13;
+	at gestion.CompteControllerTest.testVerifierIdentifiantsEducateur(CompteControllerTest.java:39)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+  </testsuite>
+</testrun>

@@ -1,0 +1,50 @@
+package ihm;
+
+import gestion.EnfantController;
+import gestion.GestionnaireIncompatibilité;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionActivitesIU extends JFrame {
+    private EnfantController enfantController;
+    private GestionnaireIncompatibilité gestionnaireIncompatibilite;
+
+    public GestionActivitesIU(String educateurEmail) {
+        setTitle("Gestion des Activités - Éducateur");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        enfantController = new EnfantController();
+        gestionnaireIncompatibilite = new GestionnaireIncompatibilité();
+
+        JPanel panel = new JPanel(new BorderLayout());
+
+        JLabel titleLabel = new JLabel("Activités Disponibles", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JTextArea activityList = new JTextArea(10, 30);
+        activityList.setEditable(false);
+
+        JButton loadButton = new JButton("Charger Activités");
+        loadButton.addActionListener(e -> {
+            Enfant enfant = enfantController.trouverEnfantParNom("Gaston"); // Exemple enfant
+            if (enfant != null) {
+                String[] activitesCompatibles = gestionnaireIncompatibilite.getActivitesCompatiblesParCategorie("Activités Récréatives", enfant);
+                activityList.setText("Activités disponibles pour " + enfant.getNom() + ":\n");
+                for (String activite : activitesCompatibles) {
+                    if (activite != null) activityList.append("- " + activite + "\n");
+                }
+            } else {
+                activityList.setText("Enfant introuvable.");
+            }
+        });
+
+        panel.add(titleLabel, BorderLayout.NORTH);
+        panel.add(new JScrollPane(activityList), BorderLayout.CENTER);
+        panel.add(loadButton, BorderLayout.SOUTH);
+
+        add(panel);
+    }
+}

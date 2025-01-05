@@ -1,0 +1,46 @@
+package ihm;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MainApp {
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("EnfantPro+");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(800, 600);
+
+            JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
+
+            JLabel welcomeLabel = new JLabel("Bienvenue sur EnfantPro+", SwingConstants.CENTER);
+            welcomeLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            mainPanel.add(welcomeLabel);
+
+            JButton parentButton = new JButton("Espace Parent");
+            JButton educateurButton = new JButton("Espace Éducateur");
+            JButton quitButton = new JButton("Quitter");
+
+            parentButton.addActionListener(e -> {
+                LoginIU loginUI = new LoginIU("parent");
+                loginUI.setVisible(true);
+            });
+
+            educateurButton.addActionListener(e -> {
+                LoginIU loginUI = new LoginIU("educateur");
+                loginUI.setVisible(true);
+            });
+
+            quitButton.addActionListener(e -> System.exit(0));
+
+            mainPanel.add(parentButton);
+            mainPanel.add(educateurButton);
+            mainPanel.add(quitButton);
+
+            frame.add(mainPanel);
+            frame.setVisible(true);
+        });
+    }
+}
+

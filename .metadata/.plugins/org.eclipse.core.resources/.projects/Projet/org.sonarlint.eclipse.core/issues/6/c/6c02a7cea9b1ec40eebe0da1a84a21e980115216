@@ -1,0 +1,11 @@
+
+Ä
+java:S3252"LUse static access with "javax.swing.WindowConstants" for "DISPOSE_ON_CLOSE".b 704073f79b13c201cb964af8eea18b6eh
+ò
+java:S1192F"]Define a constant instead of duplicating this literal "Aucune activit√© compatible." 3 times.8¡¢áú√2b b950709ab84b9991e1237ac4612f7d5ah
+ë
+java:S1192G"VDefine a constant instead of duplicating this literal "Activit√© disponible " 3 times.8¡¢áú√2b 1cddef7a0767d2463b9a1314c8cc90d4h
+è
+java:S5850"TGroup parts of the regex together to make the intended operator precedence explicit.8¡¢áú√2b 00af4a9dc4dcb5805207a90b80b60a80h
+ç
+java:S37768"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.8¡¢áú√2b 9ec5334cd1a879dc154ad60189d1f665h

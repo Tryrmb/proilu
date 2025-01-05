@@ -1,0 +1,103 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionActivitesIU extends JFrame {
+    public GestionActivitesIU(String emailEducateur, DataStorage dataStorage) {
+        setTitle("Gestion des Activités");
+        setSize(600, 700);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        JTextArea activitesTextArea = new JTextArea();
+        activitesTextArea.setEditable(false);
+
+        // Récupération des informations de l'éducateur
+        var educateur = dataStorage.trouverEducateurParEmail(emailEducateur);
+        if (educateur == null) {
+            activitesTextArea.setText("Erreur : Éducateur introuvable.");
+        } else {
+            String nomEnfant = JOptionPane.showInputDialog(this, "Nom de l'enfant :");
+            Enfant enfant = dataStorage.trouverEnfantParNom(nomEnfant);
+
+            if (enfant == null) {
+                activitesTextArea.setText("Erreur : Enfant introuvable.");
+            } else {
+                // Affichage des informations de l'enfant et de l'éducateur
+                activitesTextArea.append("Nom de l'enfant : " + enfant.getNom() + "\n");
+                activitesTextArea.append("Nom de l'éducateur connecté : \"" + educateur.getNom() + "\"\n");
+
+                String categorie = "";
+                if (educateur.getNom().equalsIgnoreCase("Medhi Souaki")) {
+                    categorie = "Sorties en Forêt et Aquatiques";
+                } else if (educateur.getNom().equalsIgnoreCase("Julie Cazeneuve")) {
+                    categorie = "Activités Récréatives";
+                } else if (educateur.getNom().equalsIgnoreCase("Christelle Meudon")) {
+                    categorie = "Activités Culinaires";
+                } else {
+                    activitesTextArea.append("Erreur : Catégorie non définie pour cet éducateur.\n");
+                }
+
+                activitesTextArea.append("Catégorie détectée : " + categorie + "\n");
+                activitesTextArea.append("Allergies : " + String.join(", ", enfant.getAllergies()) + "\n");
+                activitesTextArea.append("Problèmes de santé : " + String.join(", ", enfant.getProblemesDeSante()) + "\n\n");
+
+                // Affichage des activités disponibles
+                if (!categorie.isEmpty()) {
+                    String[] sortiesForet = {"Chasse aux trésors nature", "Construction cabane miniature",
+                            "Comptine en plein air", "Parcours sensoriels", "Observation animaux et insectes"};
+                    String[] sortiesAquatiques = {"Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur", "Bébé nageur"};
+                    String[] activitesCompatibles = dataStorage.getActivitesCompatiblesParCategorie(categorie, enfant);
+
+                    if (categorie.equals("Sorties en Forêt et Aquatiques")) {
+                        activitesTextArea.append("Sortie Forêt :\n");
+                        afficherActivitesParJour(activitesTextArea, sortiesForet);
+
+                        activitesTextArea.append("\nSortie Aquatique :\n");
+                        afficherActivitesParJour(activitesTextArea, sortiesAquatiques);
+                    } else {
+                        afficherActivitesParJour(activitesTextArea, activitesCompatibles);
+                    }
+
+                    // Demander à l'utilisateur de choisir une activité
+                    String activiteChoisie = JOptionPane.showInputDialog(this, "Choisissez une activité (ou 0 pour retour) :");
+
+                    if (!"0".equals(activiteChoisie)) {
+                        boolean activiteValide = false;
+                        for (String activite : activitesCompatibles) {
+                            if (activiteChoisie.equalsIgnoreCase(activite)) {
+                                enfant.ajouterActivite(activiteChoisie);
+                                JOptionPane.showMessageDialog(this, "Activité \"" + activiteChoisie +
+                                        "\" ajoutée pour l'enfant \"" + enfant.getNom() + "\".");
+                                activiteValide = true;
+                                break;
+                            }
+                        }
+                        if (!activiteValide) {
+                            JOptionPane.showMessageDialog(this, "Erreur : Activité non comptabilisée.");
+                        }
+                    }
+                }
+            }
+        }
+
+        JButton fermerButton = new JButton("Fermer");
+        fermerButton.addActionListener(e -> dispose());
+
+        panel.add(new JScrollPane(activitesTextArea), BorderLayout.CENTER);
+        panel.add(fermerButton, BorderLayout.SOUTH);
+        add(panel);
+    }
+
+    private void afficherActivitesParJour(JTextArea textArea, String[] activites) {
+        String[] jours = {"Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"};
+        for (int i = 0; i < jours.length; i++) {
+            String activite = i < activites.length && activites[i] != null ? activites[i] : "Aucune activité compatible.";
+            textArea.append("Activité disponible " + jours[i] + " : " + activite + "\n");
+        }
+    }
+}

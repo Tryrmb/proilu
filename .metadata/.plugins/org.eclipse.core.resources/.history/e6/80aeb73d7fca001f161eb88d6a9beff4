@@ -1,0 +1,41 @@
+package gestion;
+
+import modele.Enfant;
+
+/**
+ * Classe EnfantController
+ * Gère la liste des enfants et leurs données associées.
+ */
+public class EnfantController {
+    private static final int MAX_ENFANTS = 100;
+    private Enfant[] enfants;
+    private int indexEnfants;
+
+    public EnfantController() {
+        this.enfants = new Enfant[MAX_ENFANTS];
+        this.indexEnfants = 0;
+    }
+
+    public void ajouterEnfant(Enfant enfant) {
+        if (indexEnfants < MAX_ENFANTS) {
+            enfants[indexEnfants++] = enfant;
+        } else {
+            System.out.println("Limite maximale d'enfants atteinte.");
+        }
+    }
+
+    public Enfant trouverEnfantParNom(String nom) {
+        for (Enfant enfant : enfants) {
+            if (enfant != null && enfant.getNom().equalsIgnoreCase(nom)) {
+                return enfant;
+            }
+        }
+        return null;
+    }
+
+    public Enfant[] getEnfants() {
+        Enfant[] result = new Enfant[indexEnfants];
+        System.arraycopy(enfants, 0, result, 0, indexEnfants);
+        return result;
+    }
+}

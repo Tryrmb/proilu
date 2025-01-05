@@ -1,0 +1,15 @@
+package modele;
+
+import modele.ActiviteCulinaire;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ActiviteCulinaireTest {
+
+    @Test
+    void testCreerActiviteCulinaire() {
+        ActiviteCulinaire activite = new ActiviteCulinaire("Cuisine", "Apprendre à cuisiner un gâteau");
+        assertEquals("Cuisine", activite.getNom());
+        assertEquals("Apprendre à cuisiner un gâteau", activite.getDescription());
+    }
+}

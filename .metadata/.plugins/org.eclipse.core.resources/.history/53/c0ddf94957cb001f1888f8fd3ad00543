@@ -1,0 +1,42 @@
+package gestion;
+
+import gestion.CompteController;
+import gestion.DataStorage;
+import gestion.EnfantController;
+import modele.Educateur;
+import modele.Parent;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CompteControllerTest {
+    private CompteController compteController;
+    private DataStorage dataStorage;
+
+    @BeforeEach
+    void setUp() {
+        dataStorage = new DataStorage(new EnfantController());
+        compteController = new CompteController(dataStorage);
+    }
+
+    @Test
+    void testVerifierIdentifiantsParent() {
+        Parent parent = new Parent("Jean Dupont", "jean.dupont@mail.com", "password123");
+        dataStorage.getParents()[0] = parent;
+
+        assertTrue(compteController.verifierIdentifiants("jean.dupont@mail.com", "password123"));
+        assertFalse(compteController.verifierIdentifiants("jean.dupont@mail.com", "wrongpassword"));
+        assertFalse(compteController.verifierIdentifiants("inconnu@mail.com", "password123"));
+    }
+
+    @Test
+    void testVerifierIdentifiantsEducateur() {
+        Educateur educateur = new Educateur("Marie", "marie@mail.com", "educ123");
+        dataStorage.getEducateurs()[0] = educateur;
+
+        assertTrue(compteController.verifierIdentifiantsEducateur("marie@mail.com", "educ123"));
+        assertFalse(compteController.verifierIdentifiantsEducateur("marie@mail.com", "wrongpassword"));
+        assertFalse(compteController.verifierIdentifiantsEducateur("inconnu@mail.com", "educ123"));
+    }
+}

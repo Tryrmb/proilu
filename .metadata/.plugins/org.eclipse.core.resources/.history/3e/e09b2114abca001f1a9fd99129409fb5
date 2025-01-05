@@ -1,0 +1,17 @@
+// GestionBilansFrame.java
+package ihm;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GestionBilansFrame extends JFrame {
+    public GestionBilansFrame() {
+        setTitle("Gérer les Bilans");
+        setSize(600, 400);
+        setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JLabel("Gestion des Bilans", JLabel.CENTER), BorderLayout.CENTER);
+        add(panel);
+    }
+}

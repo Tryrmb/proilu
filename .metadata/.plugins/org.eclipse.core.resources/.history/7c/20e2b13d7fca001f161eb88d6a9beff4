@@ -1,0 +1,82 @@
+package interfaceUtilisateur;
+
+import gestion.CompteController;
+import gestion.EnfantController;
+import modele.Parent;
+import modele.Enfant;
+
+import java.util.Scanner;
+
+/**
+ * Classe BoundaryEspaceParent
+ * Interface utilisateur pour les parents.
+ */
+public class BoundaryEspaceParent {
+    private String emailParent;
+    private CompteController compteController;
+    private EnfantController enfantController;
+    private Scanner scanner;
+
+    public BoundaryEspaceParent(String emailParent, CompteController compteController, EnfantController enfantController) {
+        this.emailParent = emailParent;
+        this.compteController = compteController;
+        this.enfantController = enfantController;
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void afficherMenuParent() {
+        Parent parent = compteController.trouverParentParEmail(emailParent);
+        if (parent == null) {
+            System.out.println("Erreur : parent introuvable.");
+            return;
+        }
+
+        int choix;
+        do {
+            System.out.println("\n--- Menu Parent ---");
+            System.out.println("1) Voir les activités des enfants");
+            System.out.println("2) Voir les informations santé des enfants");
+            System.out.println("3) Voir les bilans");
+            System.out.println("0) Retour au menu principal");
+            System.out.print("Votre choix : ");
+            choix = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choix) {
+                case 1 -> afficherActivitesEnfants(parent);
+                case 2 -> afficherSanteEnfants(parent);
+                case 3 -> afficherBilansEnfants(parent);
+                case 0 -> System.out.println("Retour au menu principal.");
+                default -> System.out.println("Choix invalide, veuillez réessayer.");
+            }
+        } while (choix != 0);
+    }
+
+    private void afficherActivitesEnfants(Parent parent) {
+        System.out.println("\n--- Activités des enfants ---");
+        for (Enfant enfant : parent.getEnfants()) {
+            System.out.println("Enfant : " + enfant.getNom());
+            for (String activite : enfant.getActivites()) {
+                System.out.println(" - Activité : " + activite);
+            }
+        }
+    }
+
+    private void afficherSanteEnfants(Parent parent) {
+        System.out.println("\n--- Informations santé des enfants ---");
+        for (Enfant enfant : parent.getEnfants()) {
+            System.out.println("Enfant : " + enfant.getNom());
+            System.out.println(" - Allergies : " + enfant.getAllergies());
+            System.out.println(" - Régime alimentaire : " + enfant.getRegimeAlimentaire());
+            System.out.println(" - Problèmes de santé : " + enfant.getProblemesDeSante());
+        }
+    }
+
+    private void afficherBilansEnfants(Parent parent) {
+        System.out.println("\n--- Bilans des enfants ---");
+        for (Enfant enfant : parent.getEnfants()) {
+            System.out.println("Enfant : " + enfant.getNom());
+            System.out.println(" - Bilan : " + enfant.getBilan());
+        }
+    }
+}

@@ -1,0 +1,70 @@
+package gestion;
+
+import modele.Parent;
+import modele.Educateur;
+
+/**
+ * Classe CompteController
+ * Gère l'authentification et la récupération des comptes.
+ */
+public class CompteController {
+    private Parent[] parents;
+    private Educateur[] educateurs;
+    private static final int MAX_PARENTS = 50;
+    private static final int MAX_EDUCATEURS = 20;
+    private int indexParents = 0;
+    private int indexEducateurs = 0;
+
+    public CompteController() {
+        this.parents = new Parent[MAX_PARENTS];
+        this.educateurs = new Educateur[MAX_EDUCATEURS];
+    }
+
+    public boolean verifierIdentifiants(String email, String motDePasse) {
+        for (Parent parent : parents) {
+            if (parent != null && parent.getEmail().equals(email) && parent.getMotDePasse().equals(motDePasse)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean verifierIdentifiantsEducateur(String email, String motDePasse) {
+        for (Educateur educateur : educateurs) {
+            if (educateur != null && educateur.getEmail().equals(email) && educateur.getMotDePasse().equals(motDePasse)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Parent trouverParentParEmail(String email) {
+        for (Parent parent : parents) {
+            if (parent != null && parent.getEmail().equals(email)) {
+                return parent;
+            }
+        }
+        return null;
+    }
+
+    public Educateur trouverEducateurParEmail(String email) {
+        for (Educateur educateur : educateurs) {
+            if (educateur != null && educateur.getEmail().equals(email)) {
+                return educateur;
+            }
+        }
+        return null;
+    }
+
+    public void ajouterParent(Parent parent) {
+        if (indexParents < MAX_PARENTS) {
+            parents[indexParents++] = parent;
+        }
+    }
+
+    public void ajouterEducateur(Educateur educateur) {
+        if (indexEducateurs < MAX_EDUCATEURS) {
+            educateurs[indexEducateurs++] = educateur;
+        }
+    }
+}

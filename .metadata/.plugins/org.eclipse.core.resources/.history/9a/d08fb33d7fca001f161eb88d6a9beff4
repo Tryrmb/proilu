@@ -1,0 +1,77 @@
+package interfaceUtilisateur;
+
+import gestion.CompteController;
+import gestion.EnfantController;
+import gestion.GestionnaireIncompatibilité;
+import modele.Educateur;
+
+import java.util.Scanner;
+
+/**
+ * Classe BoundaryMenuPrincipal
+ * Gère l'affichage du menu principal.
+ */
+public class BoundaryMenuPrincipal {
+    private Scanner scanner;
+    private CompteController compteController;
+    private EnfantController enfantController;
+    private GestionnaireIncompatibilité gestionnaireIncompatibilite;
+
+    public BoundaryMenuPrincipal(CompteController compteController, EnfantController enfantController, GestionnaireIncompatibilité gestionnaireIncompatibilite) {
+        this.scanner = new Scanner(System.in);
+        this.compteController = compteController;
+        this.enfantController = enfantController;
+        this.gestionnaireIncompatibilite = gestionnaireIncompatibilite;
+    }
+
+    public void afficherMenuPrincipal() {
+        int choix;
+        do {
+            System.out.println("\n--- Menu Principal ---");
+            System.out.println("1) Espace Parent");
+            System.out.println("2) Espace Éducateur");
+            System.out.println("0) Quitter");
+            System.out.print("Votre choix : ");
+            choix = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choix) {
+                case 1 -> afficherEspaceParent();
+                case 2 -> afficherEspaceEducateur();
+                case 0 -> System.out.println("Au revoir !");
+                default -> System.out.println("Choix invalide, veuillez réessayer.");
+            }
+        } while (choix != 0);
+    }
+
+    private void afficherEspaceParent() {
+        System.out.print("Email : ");
+        String email = scanner.nextLine();
+        System.out.print("Mot de passe : ");
+        String motDePasse = scanner.nextLine();
+
+        if (compteController.verifierIdentifiants(email, motDePasse)) {
+            System.out.println("Authentification réussie.");
+            BoundaryEspaceParent espaceParent = new BoundaryEspaceParent(email, compteController, enfantController);
+            espaceParent.afficherMenuParent();
+        } else {
+            System.out.println("Erreur d'authentification.");
+        }
+    }
+
+    private void afficherEspaceEducateur() {
+        System.out.print("Email : ");
+        String email = scanner.nextLine();
+        System.out.print("Mot de passe : ");
+        String motDePasse = scanner.nextLine();
+
+        if (compteController.verifierIdentifiantsEducateur(email, motDePasse)) {
+            Educateur educateur = compteController.trouverEducateurParEmail(email);
+            System.out.println("Authentification réussie.");
+            BoundaryEspaceEducateur espaceEducateur = new BoundaryEspaceEducateur(email, compteController, enfantController, gestionnaireIncompatibilite);
+            espaceEducateur.afficherMenuEducateur();
+        } else {
+            System.out.println("Erreur d'authentification.");
+        }
+    }
+}
