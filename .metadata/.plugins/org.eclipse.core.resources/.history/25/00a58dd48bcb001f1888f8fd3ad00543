@@ -1,0 +1,99 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * Classe pour gérer les allergies d'un enfant.
+ * Interface colorée et conviviale pour une meilleure expérience utilisateur.
+ */
+public class GererAllergiesIU extends JFrame {
+    public GererAllergiesIU(DataStorage dataStorage) {
+        setTitle("🎨 Gérer les Allergies - EnfantPro+");
+        setSize(600, 500);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+        mainPanel.setBackground(new Color(255, 239, 213)); // Couleur pastel douce pour le fond
+
+        // Titre
+        JLabel titleLabel = new JLabel("Gérer les Allergies", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
+        titleLabel.setForeground(new Color(220, 20, 60)); // Rouge vif
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
+
+        // Panneau central
+        JPanel formPanel = new JPanel(new GridLayout(3, 2, 10, 10));
+        formPanel.setBackground(new Color(255, 239, 213));
+
+        JLabel enfantLabel = new JLabel("Nom de l'enfant :", SwingConstants.RIGHT);
+        enfantLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+        JTextField enfantField = new JTextField();
+        enfantField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+
+        JButton afficherButton = new JButton("Afficher Allergies");
+        personnaliserBouton(afficherButton, new Color(152, 251, 152)); // Vert pastel
+
+        JTextArea allergiesTextArea = new JTextArea();
+        allergiesTextArea.setEditable(false);
+        allergiesTextArea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+        allergiesTextArea.setBackground(new Color(255, 250, 205)); // Jaune clair
+        JScrollPane scrollPane = new JScrollPane(allergiesTextArea);
+
+        formPanel.add(enfantLabel);
+        formPanel.add(enfantField);
+        formPanel.add(afficherButton);
+        mainPanel.add(formPanel, BorderLayout.CENTER);
+        mainPanel.add(scrollPane, BorderLayout.SOUTH);
+
+        // Bouton Fermer
+        JButton fermerButton = new JButton("Fermer");
+        personnaliserBouton(fermerButton, new Color(240, 128, 128)); // Rouge clair
+        fermerButton.addActionListener(e -> dispose());
+        mainPanel.add(fermerButton, BorderLayout.SOUTH);
+
+        // Action pour afficher les allergies
+        afficherButton.addActionListener(e -> {
+            String nomEnfant = enfantField.getText().trim();
+            if (nomEnfant.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veuillez entrer un nom d'enfant.");
+                return;
+            }
+
+            Enfant enfant = dataStorage.trouverEnfantParNom(nomEnfant);
+            if (enfant == null) {
+                JOptionPane.showMessageDialog(this, "Erreur : Enfant introuvable.");
+            } else {
+                allergiesTextArea.setText("Allergies de l'enfant \"" + enfant.getNom() + "\" :\n");
+                String[] allergies = enfant.getAllergies();
+                if (allergies.length == 0) {
+                    allergiesTextArea.append("🎉 Aucune allergie enregistrée !\n");
+                } else {
+                    for (String allergie : allergies) {
+                        allergiesTextArea.append(" - " + allergie + "\n");
+                    }
+                }
+            }
+        });
+
+        add(mainPanel);
+    }
+
+    /**
+     * Méthode pour personnaliser les boutons avec un style enfantin.
+     *
+     * @param button           Le bouton à personnaliser.
+     * @param backgroundColor  La couleur de fond.
+     */
+    private void personnaliserBouton(JButton button, Color backgroundColor) {
+        button.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+        button.setBackground(backgroundColor);
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createRaisedBevelBorder());
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }
+}

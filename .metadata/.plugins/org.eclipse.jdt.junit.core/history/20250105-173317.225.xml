@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ActiviteCulinaireTest" project="Projet" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="modele.ActiviteCulinaireTest" time="0.0" displayname="ActiviteCulinaireTest" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteCulinaireTest]">
+    <testcase name="testVerifierCompatibiliteParticipants" classname="modele.ActiviteCulinaireTest" time="0.0" displayname="testVerifierCompatibiliteParticipants()" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteCulinaireTest]/[method:testVerifierCompatibiliteParticipants()]"/>
+    <testcase name="testGererIncompatibilites" classname="modele.ActiviteCulinaireTest" time="0.0" displayname="testGererIncompatibilites()" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteCulinaireTest]/[method:testGererIncompatibilites()]"/>
+    <testcase name="testCreerActiviteCulinaire" classname="modele.ActiviteCulinaireTest" time="0.0" displayname="testCreerActiviteCulinaire()" uniqueid="[engine:junit-jupiter]/[class:modele.ActiviteCulinaireTest]/[method:testCreerActiviteCulinaire()]"/>
+  </testsuite>
+</testrun>

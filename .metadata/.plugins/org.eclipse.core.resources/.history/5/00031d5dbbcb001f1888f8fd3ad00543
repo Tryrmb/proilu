@@ -1,0 +1,101 @@
+package gestion;
+
+import gestion.ActiviteController;
+import modele.Activite;
+import modele.ActiviteCulinaire;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Classe de test pour ActiviteController.
+ */
+class ActiviteControllerTest {
+
+    private ActiviteController<Activite> activiteController;
+
+    @BeforeEach
+    void setUp() {
+        activiteController = new ActiviteController<>();
+    }
+
+    @Test
+    void testAjouterActivite() {
+        Activite activite = new ActiviteCulinaire("Cuisine", "Faire un gâteau", "Pâtisserie");
+
+        activiteController.ajouterActivite("Alice", activite);
+
+        // Vérifie que l'activité a été ajoutée correctement en appelant afficherActivites
+        assertDoesNotThrow(() -> activiteController.afficherActivites("Alice"), 
+                "L'activité aurait dû être ajoutée et affichée avec succès.");
+    }
+
+    @Test
+    void testAjouterActiviteNouvelEnfant() {
+        Activite activite1 = new ActiviteCulinaire("Cuisine", "Faire un gâteau", "Pâtisserie");
+        Activite activite2 = new ActiviteCulinaire("Dessert", "Préparer une mousse au chocolat", "Pâtisserie");
+
+        activiteController.ajouterActivite("Alice", activite1);
+        activiteController.ajouterActivite("Bob", activite2);
+
+        // Vérifie qu'aucune erreur ne survient pour différents enfants
+        assertDoesNotThrow(() -> activiteController.afficherActivites("Alice"));
+        assertDoesNotThrow(() -> activiteController.afficherActivites("Bob"));
+    }
+
+    @Test
+    void testAfficherActivitesPourEnfantInexistant() {
+        String output = captureConsoleOutput(() -> activiteController.afficherActivites("Charlie"));
+        assertTrue(output.contains("Aucune activité trouvée pour Charlie"),
+                "Un message d'erreur aurait dû être affiché pour un enfant inexistant.");
+    }
+
+    @Test
+    void testAjouterActiviteAuMaximum() {
+        Activite activite = new ActiviteCulinaire("Cuisine", "Faire un gâteau", "Pâtisserie");
+
+        // Ajoute des activités jusqu'à la limite maximale
+        for (int i = 0; i < 10; i++) {
+            activiteController.ajouterActivite("Alice", activite);
+        }
+
+        // Tente d'ajouter une activité supplémentaire (devrait échouer)
+        String output = captureConsoleOutput(() -> activiteController.ajouterActivite("Alice", activite));
+        assertTrue(output.contains("Erreur : Limite maximale d'activités atteinte pour Alice"),
+                "Un message d'erreur aurait dû être affiché pour une limite d'activités dépassée.");
+    }
+
+    @Test
+    void testAjouterActiviteAuMaximumDEnfants() {
+        Activite activite = new ActiviteCulinaire("Cuisine", "Faire un gâteau", "Pâtisserie");
+
+        // Ajoute des enfants jusqu'à la limite maximale
+        for (int i = 0; i < 100; i++) {
+            activiteController.ajouterActivite("Enfant" + i, activite);
+        }
+
+        // Tente d'ajouter un enfant supplémentaire (devrait échouer)
+        String output = captureConsoleOutput(() -> activiteController.ajouterActivite("ExtraEnfant", activite));
+        assertTrue(output.contains("Erreur : Limite maximale d'enfants atteinte."),
+                "Un message d'erreur aurait dû être affiché pour une limite d'enfants dépassée.");
+    }
+
+    /**
+     * Capture la sortie console d'un Runnable.
+     *
+     * @param runnable Le code à exécuter.
+     * @return La sortie console capturée.
+     */
+    private String captureConsoleOutput(Runnable runnable) {
+        java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+        java.io.PrintStream originalOut = System.out;
+        System.setOut(new java.io.PrintStream(baos));
+        try {
+            runnable.run();
+        } finally {
+            System.setOut(originalOut);
+        }
+        return baos.toString();
+    }
+}

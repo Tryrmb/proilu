@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TypeActiviteTest" project="Projet" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="enumeration.TypeActiviteTest" time="0.027" displayname="TypeActiviteTest" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]">
+    <testcase name="testEnumValues" classname="enumeration.TypeActiviteTest" time="0.021" displayname="testEnumValues()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumValues()]"/>
+    <testcase name="testEnumToString" classname="enumeration.TypeActiviteTest" time="0.002" displayname="testEnumToString()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumToString()]"/>
+    <testcase name="testEnumInvalidValueOf" classname="enumeration.TypeActiviteTest" time="0.002" displayname="testEnumInvalidValueOf()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumInvalidValueOf()]"/>
+    <testcase name="testEnumValueOf" classname="enumeration.TypeActiviteTest" time="0.001" displayname="testEnumValueOf()" uniqueid="[engine:junit-jupiter]/[class:enumeration.TypeActiviteTest]/[method:testEnumValueOf()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,71 @@
+package gestion;
+
+import gestion.EnfantController;
+import modele.Enfant;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class EnfantControllerTest {
+
+    private EnfantController enfantController;
+
+    @BeforeEach
+    void setUp() {
+        enfantController = new EnfantController();
+    }
+
+    @Test
+    void testAjouterEnfant() {
+        Enfant enfant = new Enfant("Alice", new String[]{"Lactose"}, "Végétarien");
+        enfantController.ajouterEnfant(enfant);
+
+        Enfant[] enfants = enfantController.getEnfants();
+        assertEquals(1, enfants.length, "Le nombre d'enfants dans le contrôleur doit être de 1.");
+        assertEquals("Alice", enfants[0].getNom(), "Le nom de l'enfant ajouté doit être 'Alice'.");
+    }
+
+    @Test
+    void testAjouterEnfantLimite() {
+        for (int i = 0; i < 100; i++) {
+            enfantController.ajouterEnfant(new Enfant("Enfant" + i, new String[]{}, "Omnivore"));
+        }
+
+        assertEquals(100, enfantController.getEnfants().length, "Le contrôleur doit contenir 100 enfants au maximum.");
+
+        // Ajout d'un enfant supplémentaire après la limite
+        enfantController.ajouterEnfant(new Enfant("Extra", new String[]{}, "Omnivore"));
+        assertEquals(100, enfantController.getEnfants().length, "Le contrôleur ne doit pas contenir plus de 100 enfants.");
+    }
+
+    @Test
+    void testTrouverEnfantParNom() {
+        Enfant enfant1 = new Enfant("Alice", new String[]{"Lactose"}, "Végétarien");
+        Enfant enfant2 = new Enfant("Bob", new String[]{"Gluten"}, "Omnivore");
+
+        enfantController.ajouterEnfant(enfant1);
+        enfantController.ajouterEnfant(enfant2);
+
+        Enfant found = enfantController.trouverEnfantParNom("Bob");
+        assertNotNull(found, "L'enfant 'Bob' doit être trouvé.");
+        assertEquals("Bob", found.getNom(), "Le nom de l'enfant trouvé doit être 'Bob'.");
+
+        Enfant notFound = enfantController.trouverEnfantParNom("Charlie");
+        assertNull(notFound, "Aucun enfant nommé 'Charlie' ne doit être trouvé.");
+    }
+
+    @Test
+    void testGetEnfants() {
+        Enfant enfant1 = new Enfant("Alice", new String[]{"Lactose"}, "Végétarien");
+        Enfant enfant2 = new Enfant("Bob", new String[]{"Gluten"}, "Omnivore");
+
+        enfantController.ajouterEnfant(enfant1);
+        enfantController.ajouterEnfant(enfant2);
+
+        Enfant[] enfants = enfantController.getEnfants();
+        assertEquals(2, enfants.length, "Le contrôleur doit retourner deux enfants.");
+        assertEquals("Alice", enfants[0].getNom(), "Le premier enfant doit être 'Alice'.");
+        assertEquals("Bob", enfants[1].getNom(), "Le deuxième enfant doit être 'Bob'.");
+    }
+}

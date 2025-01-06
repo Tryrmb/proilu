@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ParentTest" project="Projet" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="modele.ParentTest" time="0.005" displayname="ParentTest" uniqueid="[engine:junit-jupiter]/[class:modele.ParentTest]">
+    <testcase name="testTrouverEnfantParNom" classname="modele.ParentTest" time="0.003" displayname="testTrouverEnfantParNom()" uniqueid="[engine:junit-jupiter]/[class:modele.ParentTest]/[method:testTrouverEnfantParNom()]"/>
+    <testcase name="testAjouterEnfant" classname="modele.ParentTest" time="0.001" displayname="testAjouterEnfant()" uniqueid="[engine:junit-jupiter]/[class:modele.ParentTest]/[method:testAjouterEnfant()]"/>
+  </testsuite>
+</testrun>

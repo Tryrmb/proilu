@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CompteTest" project="Projet" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="modele.CompteTest" time="0.0" displayname="CompteTest" uniqueid="[engine:junit-jupiter]/[class:modele.CompteTest]">
+    <testcase name="testCompteCreation" classname="modele.CompteTest" time="0.0" displayname="testCompteCreation()" uniqueid="[engine:junit-jupiter]/[class:modele.CompteTest]/[method:testCompteCreation()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,107 @@
+package interfaceUtilisateur;
+
+import gestion.CompteController;
+import gestion.DataStorage;
+import gestion.EnfantController;
+import modele.Enfant;
+import modele.Parent;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class BoundaryEspaceParentTest {
+    private BoundaryEspaceParent boundaryEspaceParent;
+    private DataStorage dataStorage;
+    private CompteController compteController;
+    private EnfantController enfantController;
+    private ByteArrayOutputStream outputStream;
+
+    @BeforeEach
+    void setUp() {
+        // Initialiser le système de stockage et les contrôleurs
+        enfantController = new EnfantController();
+        dataStorage = new DataStorage(enfantController);
+        compteController = new CompteController(dataStorage);
+
+        // Créer un parent fictif avec des enfants
+        Parent parent = new Parent("Jean Dupont", "jean.dupont@mail.com", "password123");
+        Enfant enfant1 = new Enfant("Lilou", new String[]{"Pollen"}, "Sans lactose");
+        Enfant enfant2 = new Enfant("Tom", new String[]{"Gluten"}, "Végétarien");
+        enfant1.ajouterActivite("Peinture");
+        enfant1.ajouterActivite("Natation");
+        enfant2.ajouterActivite("Football");
+        parent.ajouterEnfant(enfant1);
+        parent.ajouterEnfant(enfant2);
+        dataStorage.getParents()[0] = parent;
+
+        // Préparer l'entrée simulée
+        System.setIn(new ByteArrayInputStream("0\n".getBytes()));
+
+        // Rediriger la sortie standard pour vérifier le contenu affiché
+        outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+
+        // Créer l'instance de BoundaryEspaceParent
+        boundaryEspaceParent = new BoundaryEspaceParent(
+                "jean.dupont@mail.com",
+                compteController,
+                enfantController
+        );
+    }
+
+    @Test
+    void testAfficherMenuParent() {
+        // Simuler l'entrée utilisateur
+        System.setIn(new ByteArrayInputStream("1\n0\n".getBytes()));
+
+        // Appeler la méthode pour afficher le menu
+        boundaryEspaceParent.afficherMenuParent();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("--- Menu Parent ---"), "Le menu parent doit être affiché.");
+        assertTrue(output.contains("1) Voir les activités des enfants"), "L'option pour voir les activités doit être présente.");
+    }
+
+    @Test
+    void testAfficherActivitesEnfants() {
+        // Appeler la méthode pour afficher les activités
+        boundaryEspaceParent.afficherActivitesEnfants();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Enfant : Lilou"), "Le nom de l'enfant doit être affiché.");
+        assertTrue(output.contains(" - Activité : Peinture"), "Les activités de l'enfant doivent être affichées.");
+        assertTrue(output.contains(" - Activité : Natation"), "Toutes les activités doivent être listées.");
+    }
+
+    @Test
+    void testAfficherSanteEnfants() {
+        // Appeler la méthode pour afficher les informations santé
+        boundaryEspaceParent.afficherSanteEnfants();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Enfant : Lilou"), "Le nom de l'enfant doit être affiché.");
+        assertTrue(output.contains(" - Allergies : Pollen"), "Les allergies doivent être listées.");
+        assertTrue(output.contains(" - Régime alimentaire : Sans lactose"), "Le régime alimentaire doit être affiché.");
+    }
+
+    @Test
+    void testAfficherBilans() {
+        // Ajouter des bilans pour les enfants
+        Enfant[] enfants = dataStorage.getParents()[0].getEnfants();
+        enfants[0].setBilan("Lilou a bien participé à la peinture.");
+        enfants[1].setBilan("Tom a marqué 2 buts au football.");
+
+        // Appeler la méthode pour afficher les bilans
+        boundaryEspaceParent.afficherBilans();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Enfant : Lilou"), "Le nom de l'enfant doit être affiché.");
+        assertTrue(output.contains(" - Bilan : Lilou a bien participé à la peinture."), "Le bilan de l'enfant doit être affiché.");
+        assertTrue(output.contains(" - Bilan : Tom a marqué 2 buts au football."), "Le bilan de l'autre enfant doit être affiché.");
+    }
+}

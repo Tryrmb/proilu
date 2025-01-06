@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BoundaryEspaceParentTest" project="Projet" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="interfaceUtilisateur.BoundaryEspaceParentTest" time="0.043" displayname="BoundaryEspaceParentTest" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceParentTest]">
+    <testcase name="testAfficherMenuParent" classname="interfaceUtilisateur.BoundaryEspaceParentTest" time="0.039" displayname="testAfficherMenuParent()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceParentTest]/[method:testAfficherMenuParent()]"/>
+    <testcase name="testAfficherSanteEnfants" classname="interfaceUtilisateur.BoundaryEspaceParentTest" time="0.001" displayname="testAfficherSanteEnfants()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceParentTest]/[method:testAfficherSanteEnfants()]"/>
+    <testcase name="testAfficherActivitesEnfants" classname="interfaceUtilisateur.BoundaryEspaceParentTest" time="0.0" displayname="testAfficherActivitesEnfants()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceParentTest]/[method:testAfficherActivitesEnfants()]"/>
+    <testcase name="testAfficherBilans" classname="interfaceUtilisateur.BoundaryEspaceParentTest" time="0.0" displayname="testAfficherBilans()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceParentTest]/[method:testAfficherBilans()]"/>
+  </testsuite>
+</testrun>

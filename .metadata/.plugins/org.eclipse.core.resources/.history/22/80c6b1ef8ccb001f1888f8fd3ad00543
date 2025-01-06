@@ -1,0 +1,88 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GererAllergiesIU extends JFrame {
+    public GererAllergiesIU(DataStorage dataStorage) {
+        setTitle("🌈 Gérer les Allergies 🌈");
+        setSize(600, 500);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        // Définir un fond coloré et joyeux
+        JPanel mainPanel = new JPanel(new GridLayout(5, 1, 10, 10));
+        mainPanel.setBackground(new Color(255, 228, 196)); // Pêche clair
+
+        // Titre en haut
+        JLabel titleLabel = new JLabel("Bienvenue dans la gestion des allergies !", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        titleLabel.setForeground(new Color(220, 20, 60)); // Rouge cerise
+        mainPanel.add(titleLabel);
+
+        // Zone pour entrer le nom de l'enfant
+        JLabel enfantLabel = new JLabel("Nom de l'enfant :");
+        enfantLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+        enfantLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        JTextField enfantField = new JTextField();
+        enfantField.setBackground(new Color(255, 250, 205)); // Jaune clair
+
+        // Bouton pour afficher les allergies
+        JButton afficherButton = new JButton("🌟 Afficher Allergies 🌟");
+        personnaliserBouton(afficherButton, new Color(144, 238, 144)); // Vert clair
+
+        JTextArea allergiesTextArea = new JTextArea();
+        allergiesTextArea.setEditable(false);
+        allergiesTextArea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+        allergiesTextArea.setBackground(new Color(255, 240, 245)); // Rose clair
+
+        afficherButton.addActionListener(e -> {
+            String nomEnfant = enfantField.getText().trim();
+            if (nomEnfant.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "🌟 Veuillez entrer un nom d'enfant. 🌟");
+                return;
+            }
+
+            Enfant enfant = dataStorage.trouverEnfantParNom(nomEnfant);
+            if (enfant == null) {
+                JOptionPane.showMessageDialog(this, "🚨 Erreur : Enfant introuvable. 🚨");
+            } else {
+                allergiesTextArea.setText("🌸 Allergies de l'enfant \"" + enfant.getNom() + "\" 🌸\n");
+                String[] allergies = enfant.getAllergies();
+                if (allergies.length == 0) {
+                    allergiesTextArea.append("🎉 Aucune allergie enregistrée. 🎉\n");
+                } else {
+                    for (String allergie : allergies) {
+                        allergiesTextArea.append(" - 🌼 " + allergie + "\n");
+                    }
+                }
+            }
+        });
+
+        // Bouton pour fermer
+        JButton fermerButton = new JButton("🚪 Fermer");
+        personnaliserBouton(fermerButton, new Color(255, 182, 193)); // Rose vif
+        fermerButton.addActionListener(e -> dispose());
+
+        // Ajout des composants au panel principal
+        mainPanel.add(enfantLabel);
+        mainPanel.add(enfantField);
+        mainPanel.add(afficherButton);
+        mainPanel.add(new JScrollPane(allergiesTextArea));
+        mainPanel.add(fermerButton);
+
+        add(mainPanel);
+    }
+
+    // Méthode pour personnaliser les boutons
+    private void personnaliserBouton(JButton bouton, Color backgroundColor) {
+        bouton.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+        bouton.setBackground(backgroundColor);
+        bouton.setForeground(Color.WHITE);
+        bouton.setFocusPainted(false);
+        bouton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        bouton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+    }
+}

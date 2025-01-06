@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="DataStorageTest" project="Projet" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="gestion.DataStorageTest" time="0.018" displayname="DataStorageTest" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]">
+    <testcase name="testAjouterEtTrouverEducateur" classname="gestion.DataStorageTest" time="0.014" displayname="testAjouterEtTrouverEducateur()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAjouterEtTrouverEducateur()]"/>
+    <testcase name="testAjouterEtTrouverParent" classname="gestion.DataStorageTest" time="0.001" displayname="testAjouterEtTrouverParent()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAjouterEtTrouverParent()]"/>
+    <testcase name="testAfficherParents" classname="gestion.DataStorageTest" time="0.001" displayname="testAfficherParents()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAfficherParents()]"/>
+    <testcase name="testAjouterEnfantEtTrouver" classname="gestion.DataStorageTest" time="0.001" displayname="testAjouterEnfantEtTrouver()" uniqueid="[engine:junit-jupiter]/[class:gestion.DataStorageTest]/[method:testAjouterEnfantEtTrouver()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,105 @@
+package interfaceUtilisateur;
+
+import gestion.CompteController;
+import gestion.EnfantController;
+import interfaceUtilisateur.BoundaryMenuPrincipal;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+class BoundaryMenuPrincipalTest {
+    private CompteController compteController;
+    private EnfantController enfantController;
+    private BoundaryMenuPrincipal menuPrincipal;
+    private ByteArrayOutputStream outputStream;
+
+    @BeforeEach
+    void setUp() {
+        compteController = mock(CompteController.class); // Utilisation d'un mock pour simuler CompteController
+        enfantController = mock(EnfantController.class); // Utilisation d'un mock pour simuler EnfantController
+        menuPrincipal = new BoundaryMenuPrincipal(compteController, enfantController);
+        outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+    }
+
+    @Test
+    void testAfficherMenuPrincipalQuitter() {
+        // Simule l'entrée utilisateur pour quitter le menu
+        String simulatedInput = "0\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        menuPrincipal.afficherMenuPrincipal();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Bienvenue Sur EnfantPro+"), "Le menu principal aurait dû s'afficher.");
+        assertTrue(output.contains("Au revoir !"), "Le message de sortie aurait dû s'afficher.");
+    }
+
+    @Test
+    void testAfficherEspaceParentAuthentificationReussie() {
+        // Simule l'entrée utilisateur pour accéder à l'espace parent
+        String simulatedInput = "1\nparent@test.com\npassword123\n0\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Configure le mock pour retourner un succès d'authentification
+        when(compteController.verifierIdentifiants("parent@test.com", "password123")).thenReturn(true);
+
+        menuPrincipal.afficherMenuPrincipal();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Authentification réussie"), "Le message d'authentification réussie aurait dû s'afficher.");
+        assertTrue(output.contains("Bienvenue dans l'espace Parent !"), "L'espace parent aurait dû être accessible.");
+    }
+
+    @Test
+    void testAfficherEspaceParentAuthentificationEchouee() {
+        // Simule l'entrée utilisateur pour accéder à l'espace parent avec des identifiants incorrects
+        String simulatedInput = "1\nparent@test.com\nwrongpassword\n0\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Configure le mock pour retourner un échec d'authentification
+        when(compteController.verifierIdentifiants("parent@test.com", "wrongpassword")).thenReturn(false);
+
+        menuPrincipal.afficherMenuPrincipal();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Erreur d'authentification"), "Le message d'erreur d'authentification aurait dû s'afficher.");
+    }
+
+    @Test
+    void testAfficherEspaceEducateurAuthentificationReussie() {
+        // Simule l'entrée utilisateur pour accéder à l'espace éducateur
+        String simulatedInput = "2\neducateur@test.com\neducpassword\n0\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Configure le mock pour retourner un succès d'authentification
+        when(compteController.verifierIdentifiantsEducateur("educateur@test.com", "educpassword")).thenReturn(true);
+
+        menuPrincipal.afficherMenuPrincipal();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Authentification réussie"), "Le message d'authentification réussie aurait dû s'afficher.");
+        assertTrue(output.contains("Bienvenue dans l'espace Educateur !"), "L'espace éducateur aurait dû être accessible.");
+    }
+
+    @Test
+    void testAfficherEspaceEducateurAuthentificationEchouee() {
+        // Simule l'entrée utilisateur pour accéder à l'espace éducateur avec des identifiants incorrects
+        String simulatedInput = "2\neducateur@test.com\nwrongpassword\n0\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        // Configure le mock pour retourner un échec d'authentification
+        when(compteController.verifierIdentifiantsEducateur("educateur@test.com", "wrongpassword")).thenReturn(false);
+
+        menuPrincipal.afficherMenuPrincipal();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Erreur d'authentification"), "Le message d'erreur d'authentification aurait dû s'afficher.");
+    }
+}

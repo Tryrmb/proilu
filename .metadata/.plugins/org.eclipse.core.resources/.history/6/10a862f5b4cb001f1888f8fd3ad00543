@@ -1,0 +1,77 @@
+package interfaceUtilisateur;
+
+import gestion.ActiviteController;
+import modele.Activite;
+import modele.ActiviteCulinaire;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Classe de test pour BoundaryGestionActivitesIU.
+ */
+class BoundaryGestionActivitesIUTest {
+
+    private ActiviteController<Activite> activiteController;
+    private ByteArrayOutputStream outputStream;
+
+    @BeforeEach
+    void setUp() {
+        activiteController = new ActiviteController<>();
+        outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
+    }
+
+    @Test
+    void testAjouterActivite() {
+        String simulatedInput = "Alice\nCuisine\nApprendre à faire un gâteau\n0\n"; // Simule l'entrée utilisateur
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        
+        BoundaryGestionActivitesIU boundary = new BoundaryGestionActivitesIU(new Scanner(System.in), activiteController);
+        boundary.gererActivites();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Activité ajoutée avec succès pour Alice"), "L'activité aurait dû être ajoutée avec succès.");
+
+        // Vérifier que l'activité a bien été ajoutée dans le contrôleur
+        assertEquals(1, activiteController.getActivites().size(), "Une activité aurait dû être ajoutée.");
+        Activite activite = activiteController.getActivites().get(0);
+        assertEquals("Cuisine", activite.getNom(), "Le nom de l'activité ne correspond pas.");
+        assertEquals("Apprendre à faire un gâteau", activite.getDescription(), "La description de l'activité ne correspond pas.");
+    }
+
+    @Test
+    void testAfficherActivites() {
+        // Ajouter une activité dans le contrôleur
+        Activite activite = new ActiviteCulinaire("Cuisine", "Faire des gâteaux", "Cuisine générale");
+        activiteController.ajouterActivite("Alice", activite);
+
+        String simulatedInput = "Alice\n0\n"; // Simule l'entrée utilisateur
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        BoundaryGestionActivitesIU boundary = new BoundaryGestionActivitesIU(new Scanner(System.in), activiteController);
+        boundary.gererActivites();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Nom de l'enfant : Alice"), "Le nom de l'enfant devrait être affiché.");
+        assertTrue(output.contains("Cuisine"), "L'activité ajoutée devrait être affichée.");
+    }
+
+    @Test
+    void testChoixInvalide() {
+        String simulatedInput = "5\n0\n"; // Simule une entrée invalide suivie d'une sortie
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        BoundaryGestionActivitesIU boundary = new BoundaryGestionActivitesIU(new Scanner(System.in), activiteController);
+        boundary.gererActivites();
+
+        String output = outputStream.toString();
+        assertTrue(output.contains("Choix invalide, veuillez réessayer."), "Un choix invalide aurait dû être détecté.");
+    }
+}

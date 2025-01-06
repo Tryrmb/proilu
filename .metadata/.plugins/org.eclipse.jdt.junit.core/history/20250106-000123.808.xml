@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ActiviteControllerTest" project="Projet" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="gestion.ActiviteControllerTest" time="0.051" displayname="ActiviteControllerTest" uniqueid="[engine:junit-jupiter]/[class:gestion.ActiviteControllerTest]">
+    <testcase name="testAjouterActiviteAuMaximum" classname="gestion.ActiviteControllerTest" time="0.023" displayname="testAjouterActiviteAuMaximum()" uniqueid="[engine:junit-jupiter]/[class:gestion.ActiviteControllerTest]/[method:testAjouterActiviteAuMaximum()]"/>
+    <testcase name="testAjouterActivite" classname="gestion.ActiviteControllerTest" time="0.014" displayname="testAjouterActivite()" uniqueid="[engine:junit-jupiter]/[class:gestion.ActiviteControllerTest]/[method:testAjouterActivite()]"/>
+    <testcase name="testAjouterActiviteNouvelEnfant" classname="gestion.ActiviteControllerTest" time="0.003" displayname="testAjouterActiviteNouvelEnfant()" uniqueid="[engine:junit-jupiter]/[class:gestion.ActiviteControllerTest]/[method:testAjouterActiviteNouvelEnfant()]"/>
+    <testcase name="testAjouterActiviteAuMaximumDEnfants" classname="gestion.ActiviteControllerTest" time="0.005" displayname="testAjouterActiviteAuMaximumDEnfants()" uniqueid="[engine:junit-jupiter]/[class:gestion.ActiviteControllerTest]/[method:testAjouterActiviteAuMaximumDEnfants()]"/>
+    <testcase name="testAfficherActivitesPourEnfantInexistant" classname="gestion.ActiviteControllerTest" time="0.002" displayname="testAfficherActivitesPourEnfantInexistant()" uniqueid="[engine:junit-jupiter]/[class:gestion.ActiviteControllerTest]/[method:testAfficherActivitesPourEnfantInexistant()]"/>
+  </testsuite>
+</testrun>

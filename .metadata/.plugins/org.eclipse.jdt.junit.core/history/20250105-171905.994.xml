@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="GestionCompatibilitéTest" project="Projet" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="gestion.GestionCompatibilitéTest" time="0.006" displayname="GestionCompatibilitéTest" uniqueid="[engine:junit-jupiter]/[class:gestion.GestionCompatibilitéTest]">
+    <testcase name="testAjouterEtVerifierIncompatibilites" classname="gestion.GestionCompatibilitéTest" time="0.004" displayname="testAjouterEtVerifierIncompatibilites()" uniqueid="[engine:junit-jupiter]/[class:gestion.GestionCompatibilitéTest]/[method:testAjouterEtVerifierIncompatibilites()]"/>
+    <testcase name="testGetActivitesCompatibles" classname="gestion.GestionCompatibilitéTest" time="0.001" displayname="testGetActivitesCompatibles()" uniqueid="[engine:junit-jupiter]/[class:gestion.GestionCompatibilitéTest]/[method:testGetActivitesCompatibles()]"/>
+  </testsuite>
+</testrun>

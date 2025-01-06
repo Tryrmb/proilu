@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="AllergieEtRestrictionTest" project="Projet" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="gestion.AllergieEtRestrictionTest" time="0.06" displayname="AllergieEtRestrictionTest" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]">
+    <testcase name="testAfficherRestrictions" classname="gestion.AllergieEtRestrictionTest" time="0.041" displayname="testAfficherRestrictions()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testAfficherRestrictions()]"/>
+    <testcase name="testAjouterRestrictionAvecNiveauInvalide" classname="gestion.AllergieEtRestrictionTest" time="0.004" displayname="testAjouterRestrictionAvecNiveauInvalide()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testAjouterRestrictionAvecNiveauInvalide()]"/>
+    <testcase name="testVerifierCompatibilite" classname="gestion.AllergieEtRestrictionTest" time="0.002" displayname="testVerifierCompatibilite()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testVerifierCompatibilite()]"/>
+    <testcase name="testGenererAlerteIndiceInvalide" classname="gestion.AllergieEtRestrictionTest" time="0.001" displayname="testGenererAlerteIndiceInvalide()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testGenererAlerteIndiceInvalide()]"/>
+    <testcase name="testGenererAlerte" classname="gestion.AllergieEtRestrictionTest" time="0.005" displayname="testGenererAlerte()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testGenererAlerte()]"/>
+    <testcase name="testNotificationEnvoyerNotification" classname="gestion.AllergieEtRestrictionTest" time="0.002" displayname="testNotificationEnvoyerNotification()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testNotificationEnvoyerNotification()]"/>
+    <testcase name="testAjouterRestrictionValide" classname="gestion.AllergieEtRestrictionTest" time="0.001" displayname="testAjouterRestrictionValide()" uniqueid="[engine:junit-jupiter]/[class:gestion.AllergieEtRestrictionTest]/[method:testAjouterRestrictionValide()]"/>
+  </testsuite>
+</testrun>

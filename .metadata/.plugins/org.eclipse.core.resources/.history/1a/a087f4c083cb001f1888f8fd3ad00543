@@ -1,0 +1,57 @@
+package ihm;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class MainApp extends JFrame {
+    public MainApp() {
+        setTitle("EnfantPro+");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Titre
+        JLabel title = new JLabel("Bienvenue sur EnfantPro+", JLabel.CENTER);
+        title.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+        title.setForeground(new Color(255, 105, 180)); // Rose vif
+        add(title, BorderLayout.NORTH);
+
+        // Panneau central avec boutons
+        JPanel panel = new JPanel(new GridLayout(2, 2, 10, 10));
+        panel.setBackground(new Color(173, 216, 230)); // Bleu clair
+
+        // Boutons
+        JButton parentButton = creerBouton("Espace Parent", new Color(255, 182, 193)); // Rose clair
+        JButton educateurButton = creerBouton("Espace Éducateur", new Color(135, 206, 250)); // Bleu ciel
+        JButton quitterButton = creerBouton("Quitter", new Color(240, 128, 128)); // Rouge clair
+
+        // Ajouter les boutons au panneau
+        panel.add(parentButton);
+        panel.add(educateurButton);
+        panel.add(quitterButton);
+
+        // Ajouter le panneau central
+        add(panel, BorderLayout.CENTER);
+
+        // Icône et fond personnalisé
+        setIconImage(new ImageIcon("resources/logo.png").getImage()); // Ajoutez un logo
+        getContentPane().setBackground(new Color(255, 239, 213)); // Crème pastel
+
+        setVisible(true);
+    }
+
+    private JButton creerBouton(String text, Color backgroundColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+        button.setForeground(Color.WHITE);
+        button.setBackground(backgroundColor);
+        button.setFocusPainted(false);
+        button.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2, true));
+        return button;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(MainApp::new);
+    }
+}
+

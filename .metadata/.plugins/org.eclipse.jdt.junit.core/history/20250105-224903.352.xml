@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CompteControllerTest" project="Projet" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="gestion.CompteControllerTest" time="0.023" displayname="CompteControllerTest" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]">
+    <testcase name="testVerifierIdentifiantsParent" classname="gestion.CompteControllerTest" time="0.018" displayname="testVerifierIdentifiantsParent()" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]/[method:testVerifierIdentifiantsParent()]"/>
+    <testcase name="testVerifierIdentifiantsEducateur" classname="gestion.CompteControllerTest" time="0.004" displayname="testVerifierIdentifiantsEducateur()" uniqueid="[engine:junit-jupiter]/[class:gestion.CompteControllerTest]/[method:testVerifierIdentifiantsEducateur()]"/>
+  </testsuite>
+</testrun>

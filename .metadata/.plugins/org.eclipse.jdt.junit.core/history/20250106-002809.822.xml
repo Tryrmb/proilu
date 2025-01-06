@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EducateurTest" project="Projet" tests="1" started="1" failures="1" errors="0" ignored="0">
+  <testsuite name="modele.EducateurTest" time="0.033" displayname="EducateurTest" uniqueid="[engine:junit-jupiter]/[class:modele.EducateurTest]">
+    <testcase name="testEducateurCreation" classname="modele.EducateurTest" time="0.033" displayname="testEducateurCreation()" uniqueid="[engine:junit-jupiter]/[class:modele.EducateurTest]/[method:testEducateurCreation()]">
+      <failure>
+        <expected>medhi.souaki@enfantpro.fr</expected>
+        <actual>medhi.souaki@enfantpro.com</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;medhi.souaki@enfantpro.fr&gt; but was: &lt;medhi.souaki@enfantpro.com&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)&#13;
+	at modele.EducateurTest.testEducateurCreation(EducateurTest.java:13)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+  </testsuite>
+</testrun>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="EnfantControllerTest" project="Projet" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="gestion.EnfantControllerTest" time="0.04" displayname="EnfantControllerTest" uniqueid="[engine:junit-jupiter]/[class:gestion.EnfantControllerTest]">
+    <testcase name="testGetEnfants" classname="gestion.EnfantControllerTest" time="0.026" displayname="testGetEnfants()" uniqueid="[engine:junit-jupiter]/[class:gestion.EnfantControllerTest]/[method:testGetEnfants()]"/>
+    <testcase name="testAjouterEnfantLimite" classname="gestion.EnfantControllerTest" time="0.008" displayname="testAjouterEnfantLimite()" uniqueid="[engine:junit-jupiter]/[class:gestion.EnfantControllerTest]/[method:testAjouterEnfantLimite()]"/>
+    <testcase name="testTrouverEnfantParNom" classname="gestion.EnfantControllerTest" time="0.002" displayname="testTrouverEnfantParNom()" uniqueid="[engine:junit-jupiter]/[class:gestion.EnfantControllerTest]/[method:testTrouverEnfantParNom()]"/>
+    <testcase name="testAjouterEnfant" classname="gestion.EnfantControllerTest" time="0.001" displayname="testAjouterEnfant()" uniqueid="[engine:junit-jupiter]/[class:gestion.EnfantControllerTest]/[method:testAjouterEnfant()]"/>
+  </testsuite>
+</testrun>

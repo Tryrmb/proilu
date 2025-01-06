@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="BoundaryEspaceEducateurTest" project="Projet" tests="3" started="3" failures="0" errors="1" ignored="0">
+  <testsuite name="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.046" displayname="BoundaryEspaceEducateurTest" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]">
+    <testcase name="testAfficherMenuParent" classname="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.025" displayname="testAfficherMenuParent()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]/[method:testAfficherMenuParent()]"/>
+    <testcase name="testAfficherGestionActivites" classname="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.012" displayname="testAfficherGestionActivites()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]/[method:testAfficherGestionActivites()]"/>
+    <testcase name="testAfficherMenuEducateur" classname="interfaceUtilisateur.BoundaryEspaceEducateurTest" time="0.008" displayname="testAfficherMenuEducateur()" uniqueid="[engine:junit-jupiter]/[class:interfaceUtilisateur.BoundaryEspaceEducateurTest]/[method:testAfficherMenuEducateur()]">
+      <error>java.util.NoSuchElementException&#13;
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)&#13;
+	at java.base/java.util.Scanner.next(Scanner.java:1594)&#13;
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)&#13;
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)&#13;
+	at interfaceUtilisateur.BoundaryEspaceEducateur.afficherMenuEducateur(BoundaryEspaceEducateur.java:43)&#13;
+	at interfaceUtilisateur.BoundaryEspaceEducateurTest.testAfficherMenuEducateur(BoundaryEspaceEducateurTest.java:63)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

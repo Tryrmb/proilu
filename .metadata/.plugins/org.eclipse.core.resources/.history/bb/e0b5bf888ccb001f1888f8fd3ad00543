@@ -1,0 +1,60 @@
+package ihm;
+
+import gestion.DataStorage;
+import modele.Enfant;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class GererAllergiesIU extends JFrame {
+    public GererAllergiesIU(DataStorage dataStorage) {
+        setTitle("Gérer les Allergies");
+        setSize(500, 400);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel mainPanel = new JPanel(new GridLayout(4, 1, 10, 10));
+        mainPanel.setBackground(new Color(245, 245, 220)); // Couleur douce et claire
+
+        JLabel enfantLabel = new JLabel("Nom de l'enfant :");
+        JTextField enfantField = new JTextField();
+        JButton afficherButton = new JButton("Afficher Allergies");
+        JTextArea allergiesTextArea = new JTextArea();
+        allergiesTextArea.setEditable(false);
+        allergiesTextArea.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+        allergiesTextArea.setBackground(new Color(255, 255, 240));
+
+        afficherButton.addActionListener(e -> {
+            String nomEnfant = enfantField.getText().trim();
+            if (nomEnfant.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Veuillez entrer un nom d'enfant.");
+                return;
+            }
+
+            Enfant enfant = dataStorage.trouverEnfantParNom(nomEnfant);
+            if (enfant == null) {
+                JOptionPane.showMessageDialog(this, "Erreur : Enfant introuvable.");
+            } else {
+                allergiesTextArea.setText("Allergies de l'enfant \"" + enfant.getNom() + "\":\n");
+                String[] allergies = enfant.getAllergies();
+                if (allergies.length == 0) {
+                    allergiesTextArea.append("Aucune allergie enregistrée.\n");
+                } else {
+                    for (String allergie : allergies) {
+                        allergiesTextArea.append(" - " + allergie + "\n");
+                    }
+                }
+            }
+        });
+
+        JButton fermerButton = new JButton("Fermer");
+        fermerButton.addActionListener(e -> dispose());
+
+        mainPanel.add(enfantLabel);
+        mainPanel.add(enfantField);
+        mainPanel.add(afficherButton);
+        mainPanel.add(new JScrollPane(allergiesTextArea));
+        mainPanel.add(fermerButton);
+
+        add(mainPanel);
+    }
+}
